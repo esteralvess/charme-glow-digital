@@ -1,73 +1,246 @@
-# Welcome to your Lovable project
+# Cheias de Charme Studio - Site Premium
 
-## Project info
+Site desenvolvido para o estúdio de beleza Cheias de Charme Studio, especializado em manicure e estética em Suzano-SP.
 
-**URL**: https://lovable.dev/projects/16c564f3-157d-4fab-b136-199c34bfa1f6
+## 🎨 Design & Características
 
-## How can I edit this code?
+- **Estética Premium**: Design inspirado em marcas de luxo com paleta refinada
+- **Mobile-First**: Otimizado para dispositivos móveis
+- **Performance**: Carregamento rápido com lazy loading e code splitting
+- **SEO Otimizado**: Meta tags, structured data e otimizações para buscadores
+- **Acessibilidade**: Conformidade com padrões WCAG
 
-There are several ways of editing your application.
+## 🛠 Tecnologias Utilizadas
 
-**Use Lovable**
+- **React 18** com TypeScript
+- **Vite** para build e desenvolvimento
+- **Tailwind CSS** para estilização
+- **React Router DOM** para navegação
+- **Lucide React** para ícones
+- **Radix UI** para componentes base
+- **TanStack Query** para gerenciamento de estado
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/16c564f3-157d-4fab-b136-199c34bfa1f6) and start prompting.
+## 🚀 Instalação e Desenvolvimento
 
-Changes made via Lovable will be committed automatically to this repo.
+### Pré-requisitos
+- Node.js 18+ 
+- npm ou yarn
 
-**Use your preferred IDE**
+### Configuração Local
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+```bash
+# Clone o repositório
+git clone <seu-repositorio>
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+# Navegue para o diretório
+cd cheias-de-charme-studio
 
-Follow these steps:
+# Instale as dependências
+npm install
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Inicie o servidor de desenvolvimento
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+O site estará disponível em `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📱 Estrutura do Projeto
 
-**Use GitHub Codespaces**
+```
+src/
+├── components/
+│   ├── layout/
+│   │   ├── Header.tsx
+│   │   └── Footer.tsx
+│   └── ui/
+│       └── button-premium.tsx
+├── pages/
+│   ├── Home.tsx
+│   ├── Catalogo.tsx
+│   ├── Avaliacoes.tsx
+│   ├── Lancamento.tsx
+│   ├── Contato.tsx
+│   └── NotFound.tsx
+├── assets/
+│   └── [imagens geradas]
+├── lib/
+│   └── utils.ts
+└── index.css (Design System)
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🎯 Funcionalidades Implementadas
 
-## What technologies are used for this project?
+### ✅ Páginas Principais
+- **Home**: Hero section, serviços em destaque, depoimentos, CTAs
+- **Catálogo**: Lista completa de serviços com preços e descrições
+- **Avaliações**: Depoimentos reais com sistema de estrelas
+- **Lançamentos**: Novos serviços e promoções
+- **Contato**: Múltiplas formas de contato e informações
 
-This project is built with:
+### ✅ Integrações Preparadas
+- **WhatsApp Business**: CTAs com UTM tracking
+- **Google Calendar**: Placeholder para agendamento
+- **Google Analytics**: Estrutura preparada
+- **Redes Sociais**: Links para Instagram e Facebook
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### ✅ SEO & Performance
+- Meta tags otimizadas
+- Lazy loading de imagens
+- Code splitting por rotas
+- Sitemap e robots.txt
+- Structured data preparado
 
-## How can I deploy this project?
+## 🔧 Configurações Necessárias
 
-Simply open [Lovable](https://lovable.dev/projects/16c564f3-157d-4fab-b136-199c34bfa1f6) and click on Share -> Publish.
+### 1. WhatsApp Business
+Atualize o número nos arquivos:
+- `src/components/layout/Header.tsx`
+- `src/components/layout/Footer.tsx`
+- `src/pages/Home.tsx`
+- `src/pages/Catalogo.tsx`
+- `src/pages/Avaliacoes.tsx`
+- `src/pages/Lancamento.tsx`
+- `src/pages/Contato.tsx`
 
-## Can I connect a custom domain to my Lovable project?
+Substitua `5511999999999` pelo número real do WhatsApp Business.
 
-Yes, you can!
+### 2. Google Calendar (Opcional)
+No arquivo `src/pages/Home.tsx`, substitua:
+```javascript
+const handleCalendarClick = () => {
+  window.open('https://calendar.google.com', '_blank');
+};
+```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Por sua URL do Google Calendar para agendamentos.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### 3. Redes Sociais
+Atualize os links nos componentes Footer e páginas de contato:
+- Instagram: `https://instagram.com/cheiasdecharmestudio`
+- Facebook: `https://facebook.com/cheiasdecharmestudio`
+
+### 4. E-mail
+Atualize o e-mail em `src/pages/Contato.tsx`:
+```javascript
+window.location.href = 'mailto:contato@cheiasdecharmestudio.com.br';
+```
+
+### 5. Endereço e Localização
+Atualize as informações de endereço em:
+- `src/components/layout/Footer.tsx`
+- `src/pages/Contato.tsx`
+
+## 🚀 Deploy
+
+### Vercel (Recomendado)
+
+1. Conecte seu repositório ao Vercel
+2. Configure as variáveis de ambiente (se necessário)
+3. Deploy automático a cada push
+
+### Netlify
+
+1. Build command: `npm run build`
+2. Publish directory: `dist`
+3. Configure redirects para SPAs
+
+### Build Manual
+
+```bash
+# Gerar build de produção
+npm run build
+
+# Preview do build
+npm run preview
+```
+
+## 📊 Analytics e Monitoramento
+
+### Google Analytics 4
+Adicione seu ID do GA4 em `index.html`:
+
+```html
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'GA_MEASUREMENT_ID');
+</script>
+```
+
+### Meta Pixel (Facebook)
+Para campanhas de marketing digital, adicione o Meta Pixel no `index.html`.
+
+## 🔒 Integrações de Backend (Opcionais)
+
+### Supabase
+Para funcionalidades avançadas como:
+- Sistema de agendamento completo
+- Banco de dados de clientes
+- Autenticação de admin
+- Newsletter
+
+### EmailJS
+Para formulários de contato diretos:
+```bash
+npm install emailjs-com
+```
+
+### Firebase
+Para analytics avançados e notificações push.
+
+## 🎨 Customização Visual
+
+### Paleta de Cores
+As cores estão definidas em `src/index.css`:
+- Primary: `#C0A47F` (Bronze elegante)
+- Background: `#FBF9F6` (Off-white suave)
+- Foreground: `#4E4A47` (Cinza quente)
+
+### Tipografia
+- **Display (Títulos)**: Playfair Display (Google Fonts)
+- **Corpo**: Montserrat (Google Fonts)
+
+### Componentes
+Todos os componentes seguem o design system definido no `index.css` e `tailwind.config.ts`.
+
+## 📱 Responsividade
+
+O site é totalmente responsivo com breakpoints:
+- Mobile: < 768px
+- Tablet: 768px - 1023px
+- Desktop: ≥ 1024px
+
+## 🔍 SEO
+
+### Meta Tags Implementadas
+- Title tags otimizados
+- Meta descriptions
+- Open Graph tags
+- Twitter Cards
+- Canonical URLs
+
+### Structured Data
+Preparado para:
+- LocalBusiness
+- Service
+- Review
+
+## 🚨 Próximos Passos
+
+1. **Configurar integrações** (WhatsApp, e-mail, redes sociais)
+2. **Adicionar Google Analytics**
+3. **Configurar domínio personalizado**
+4. **Testar funcionalidades** em diferentes dispositivos
+5. **Otimizar imagens** se necessário
+6. **Configurar SSL** e segurança
+
+## 📞 Suporte
+
+Para suporte técnico ou customizações adicionais, entre em contato.
+
+---
+
+**Desenvolvido com ❤️ para o Cheias de Charme Studio**

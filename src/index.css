@@ -2,95 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Cheias de Charme Studio Design System - Premium Beauty Aesthetic */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core Brand Colors - Inspired by luxury perfume/jewelry aesthetics */
+    --background: 43 24% 97%; /* #FBF9F6 - Soft off-white */
+    --foreground: 23 11% 30%; /* #4E4A47 - Warm dark gray instead of black */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 43 24% 97%;
+    --card-foreground: 23 11% 30%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 43 24% 97%;
+    --popover-foreground: 23 11% 30%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Premium Brand Colors */
+    --primary: 32 28% 63%; /* #C0A47F - Elegant bronze/gold */
+    --primary-foreground: 43 24% 97%;
+    --primary-hover: 32 28% 55%; /* Darker bronze for hover */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 40 20% 92%; /* #F0EDE8 - Subtle beige */
+    --secondary-foreground: 23 11% 30%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 40 20% 92%;
+    --muted-foreground: 23 8% 55%; /* #8B8680 - Muted brown */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 35 25% 88%; /* #E8E2DA - Warm neutral */
+    --accent-foreground: 23 11% 30%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 65% 51%;
+    --destructive-foreground: 43 24% 97%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 40 20% 90%; /* #EBE7E0 - Soft border */
+    --input: 40 20% 90%;
+    --ring: 32 28% 63%; /* Same as primary */
 
-    --radius: 0.5rem;
+    --radius: 0.75rem; /* Slightly more rounded for premium feel */
 
-    --sidebar-background: 0 0% 98%;
+    /* Premium Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(32 28% 63%), hsl(32 28% 55%));
+    --gradient-hero: linear-gradient(180deg, hsl(43 24% 97%), hsl(40 20% 92%));
+    --gradient-card: linear-gradient(145deg, hsl(43 24% 97%), hsl(40 20% 95%));
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* Elegant Shadows */
+    --shadow-soft: 0 2px 20px -5px hsl(32 28% 63% / 0.15);
+    --shadow-card: 0 4px 30px -8px hsl(32 28% 63% / 0.12);
+    --shadow-premium: 0 8px 40px -12px hsl(32 28% 63% / 0.2);
 
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 23 11% 8%; /* #1A1817 - Dark warm brown */
+    --foreground: 43 24% 97%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 23 11% 12%;
+    --card-foreground: 43 24% 97%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 23 11% 8%;
+    --popover-foreground: 43 24% 97%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 32 28% 70%; /* Lighter gold in dark mode */
+    --primary-foreground: 23 11% 8%;
+    --primary-hover: 32 28% 75%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 23 8% 18%;
+    --secondary-foreground: 43 24% 97%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 23 8% 18%;
+    --muted-foreground: 40 15% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 23 8% 18%;
+    --accent-foreground: 43 24% 97%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 23 8% 18%;
+    --input: 23 8% 18%;
+    --ring: 32 28% 70%;
   }
 }
 
@@ -100,6 +89,68 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  /* Premium Typography Hierarchy */
+  .font-display {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer components {
+  /* Premium Button Variants */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 
+           shadow-soft transition-all duration-300 
+           hover:shadow-premium hover:-translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border border-primary text-primary 
+           hover:bg-primary hover:text-primary-foreground
+           transition-all duration-300 hover:shadow-soft;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground
+           transition-all duration-300;
+  }
+
+  /* Premium Card */
+  .card-premium {
+    @apply bg-gradient-to-br from-card to-secondary/50 
+           border border-border/60 rounded-xl 
+           shadow-card hover:shadow-premium 
+           transition-all duration-500 hover:-translate-y-1;
+  }
+
+  /* Text Gradients */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent;
+  }
+
+  /* Smooth Animations */
+  .animate-fade-up {
+    @apply animate-in slide-in-from-bottom-4 fade-in duration-700;
+  }
+
+  .animate-fade-in {
+    @apply animate-in fade-in duration-500;
+  }
+
+  .animate-scale-in {
+    @apply animate-in zoom-in-95 duration-300;
   }
 }
