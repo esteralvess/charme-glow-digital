@@ -260,6 +260,32 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Launch Cocktail Section */}
+      <section className="py-20 lg:py-32 bg-secondary/10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center space-y-8 animate-fade-up">
+            <div className="space-y-4">
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
+                Você é nossa convidada especial.
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Participe do nosso coquetel de lançamento e celebre conosco.
+              </p>
+            </div>
+            
+            <div className="pt-4">
+              <Link to="/lancamento">
+                <Button variant="secondary" size="xl" className="group">
+                  <Sparkles className="w-5 h-5 mr-3" />
+                  Confirmar Presença
+                  <ArrowRight className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 lg:py-32 bg-gradient-card">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
