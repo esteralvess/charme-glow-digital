@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button-premium';
 import { cn } from '@/lib/utils';
+import logo from '@/assets/logo.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,16 +30,9 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
-            <div className="flex flex-col">
-              <span className="font-display text-xl lg:text-2xl font-semibold text-foreground group-hover:text-primary transition-colors">
-                Cheias de Charme
-              </span>
-              <span className="font-sans text-xs lg:text-sm text-muted-foreground tracking-wider uppercase">
-                Studio
-              </span>
-            </div>
-          </Link>
+        <Link to="/" className="flex items-center group">
+          <img src={logo} alt="Cheias de Charme Studio" className="h-10 w-auto" />
+        </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">

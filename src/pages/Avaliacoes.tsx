@@ -1,5 +1,6 @@
 import React from 'react';
-import { Star, Heart, Calendar } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Star, Heart, Calendar, MessageCircle, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button-premium';
 import { Card } from '@/components/ui/card';
 
@@ -126,6 +127,21 @@ const Avaliacoes = () => {
               Veja o que elas dizem sobre nossa experiência de cuidado.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Botão para nova avaliação */}
+      <section className="py-8 bg-secondary/20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-center">
+                <Link to="/avaliacoes/deixar-avaliacao">
+                    <Button variant="primary" size="lg" className="group">
+                        <MessageCircle className="w-4 h-4 mr-2" />
+                        Deixar a Sua Avaliação
+                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                </Link>
+            </div>
         </div>
       </section>
 

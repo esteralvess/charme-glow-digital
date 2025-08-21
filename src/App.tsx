@@ -14,6 +14,7 @@ const Avaliacoes = lazy(() => import("./pages/Avaliacoes"));
 const Lancamento = lazy(() => import("./pages/Lancamento"));
 const Contato = lazy(() => import("./pages/Contato"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const DeixarAvaliacao = lazy(() => import("./pages/DeixarAvaliacao")); // Adicionado: Nova página
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => (
               <Route path="/" element={<Home />} />
               <Route path="/catalogo" element={<Catalogo />} />
               <Route path="/avaliacoes" element={<Avaliacoes />} />
+              <Route path="/avaliacoes/deixar-avaliacao" element={<DeixarAvaliacao />} /> {/* Adicionado: Nova rota */}
               <Route path="/lancamento" element={<Lancamento />} />
               <Route path="/contato" element={<Contato />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

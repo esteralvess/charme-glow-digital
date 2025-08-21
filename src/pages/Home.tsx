@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Star, ArrowRight, Clock, Shield, Heart, Sparkles, Phone, Calendar } from 'lucide-react';
+import { Star, ArrowRight, Clock, Shield, Heart, Sparkles, Phone, Calendar, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button-premium';
 import { Card } from '@/components/ui/card';
 import heroImage from '@/assets/hero-manicure.jpg';
@@ -77,12 +77,12 @@ const Home = () => {
             
             {/* Coluna da Esquerda: Textos e Botões */}
             <div className="text-center lg:text-left animate-fade-up">
-              <div className="space-y-4">
-                <img src={logo} alt="Cheias de Charme" className="h-20 lg:h-24 w-auto mx-auto lg:mx-0" />
-              </div>
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground">
+                Unhas que encantam, charme que marca.
+              </h1>
 
-              <p className="text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed mt-8">
-                No Cheias de Charme Studio, cada detalhe é pensado para realçar sua beleza única.
+              <p className="text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed mt-">
+                No Studio Cheias de Charme, cada detalhe é pensado para realçar sua beleza única.
                 Manicure e estética premium em Suzano-SP.
               </p>
               
@@ -212,7 +212,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
+    {/* Testimonials Section */}
       <section className="py-20 lg:py-32 bg-secondary/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16 animate-fade-up">
@@ -253,10 +253,17 @@ const Home = () => {
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-12 flex flex-col sm:flex-row justify-center gap-4">
             <Link to="/avaliacoes">
               <Button variant="secondary" size="lg" className="group">
                 Ver Mais Avaliações
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+            <Link to="/avaliacoes/deixar-avaliacao">
+              <Button variant="primary" size="lg" className="group">
+                <MessageCircle className="w-4 h-4 mr-2" />
+                Deixar a Sua Avaliação
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
@@ -264,22 +271,27 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Launch Cocktail Section */}
-      <section className="py-20 lg:py-32 bg-secondary/10">
+
+    {/* Launch Cocktail Section */}
+      <section className="py-20 lg:py-32 bg-primary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center space-y-8 animate-fade-up">
             <div className="space-y-4">
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-foreground">
                 Você é nossa convidada especial.
               </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-lg text-primary-foreground leading-relaxed">
                 Participe do nosso coquetel de lançamento e celebre conosco.
               </p>
             </div>
             
             <div className="pt-4">
               <Link to="/lancamento">
-                <Button variant="secondary" size="xl" className="group">
+                <Button 
+                  variant="secondary" 
+                  size="xl" 
+                  className="group border-primary-foreground text-primary-foreground"
+                >
                   <Sparkles className="w-5 h-5 mr-3" />
                   Confirmar Presença
                   <ArrowRight className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform" />
