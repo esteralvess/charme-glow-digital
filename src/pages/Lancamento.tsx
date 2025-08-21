@@ -101,7 +101,7 @@ const Lancamento = () => {
                     </h2>
                     <p className="text-muted-foreground leading-relaxed">
                       Garanta seu lugar no nosso evento e receba um cupom de 
-                      **10% de desconto** para seu primeiro serviço.
+                      <strong>10% de desconto</strong> para seu primeiro serviço.
                     </p>
                   </div>
                   <Form {...form}>

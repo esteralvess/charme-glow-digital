@@ -81,7 +81,7 @@ const Home = () => {
                 Unhas que encantam, charme que marca.
               </h1>
 
-              <p className="text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed mt-">
+              <p className="text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed mt-8">
                 No Studio Cheias de Charme, cada detalhe é pensado para realçar sua beleza única.
                 Manicure e estética premium em Suzano-SP.
               </p>
