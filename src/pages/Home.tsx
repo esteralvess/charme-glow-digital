@@ -4,32 +4,35 @@ import { Star, ArrowRight, Clock, Shield, Heart, Sparkles, Phone, Calendar } fro
 import { Button } from '@/components/ui/button-premium';
 import { Card } from '@/components/ui/card';
 import heroImage from '@/assets/hero-manicure.jpg';
-import spaRoom from '@/assets/spa-room.jpg';
-import nailTools from '@/assets/nail-tools.jpg';
-import facialTreatment from '@/assets/facial-treatment.jpg';
+import Sobrancelha from '@/assets/sobrancelha.png';
+import PeMaoGel from '@/assets/pe-mao-gel.png';
+import MaoGel from '@/assets/gel.png';
+import logo from '@/assets/logo.png';
+import Maodeitada from '@/assets/Maodeitada.png';
+import Maoemped from '@/assets/Maoempe.png';
 
 const Home = () => {
   const services = [
     {
-      title: 'Manicure Premium',
-      description: 'Cuidado completo para suas unhas com produtos de alta qualidade e técnicas profissionais.',
-      price: 'A partir de R$ 35',
-      image: nailTools,
-      highlights: ['Esmaltação perfeita', 'Cutículas impecáveis', 'Hidratação especial']
+      title: 'Pacote Clássico',
+      description: 'O cuidado completo para o dia a dia. Mãos e pés com esmaltação tradicional para um look impecável.',
+      price: 'A consultar',
+      image: PeMaoGel,
+      highlights: ['Mão e Pé Tradicional', 'Cuticulagem Perfeita', 'Hidratação Suave']
     },
     {
-      title: 'Estética Facial',
-      description: 'Tratamentos personalizados para realçar a beleza natural da sua pele.',
-      price: 'A partir de R$ 80',
-      image: facialTreatment,
-      highlights: ['Limpeza profunda', 'Hidratação intensiva', 'Produtos premium']
+      title: 'Pacote Realce',
+      description: 'A combinação perfeita para realçar sua beleza, unindo o cuidado das mãos e pés com um design de sobrancelha.',
+      price: 'A consultar',
+      image: Sobrancelha,
+      highlights: ['Mão e Pé Tradicional', 'Design de Sobrancelha', 'Harmonização do Olhar']
     },
     {
-      title: 'Cuidados Especiais',
-      description: 'Serviços exclusivos para momentos únicos e ocasiões especiais.',
-      price: 'Sob consulta',
-      image: spaRoom,
-      highlights: ['Atendimento personalizado', 'Ambiente relaxante', 'Experiência premium']
+      title: 'Pacote Durabilidade',
+      description: 'Praticidade e brilho duradouro. Mãos com a resistência do esmalte em gel e pés com o cuidado tradicional.',
+      price: 'A consultar',
+      image: MaoGel,
+      highlights: ['Mão com Esmalte em Gel', 'Pé Tradicional', 'Brilho por mais tempo']
     }
   ];
 
@@ -68,53 +71,41 @@ const Home = () => {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
-        <div className="absolute inset-0 z-0">
-          <img
-            src={heroImage}
-            alt="Manicure premium no Cheias de Charme Studio"
-            className="w-full h-full object-cover opacity-20"
-            loading="eager"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/90 to-background/70" />
-        </div>
-        
-        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-up">
-            <div className="space-y-4">
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl font-bold text-foreground leading-tight">
-                Desperte Sua
-                <span className="text-gradient block">Elegância Natural</span>
-              </h1>
-              <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                No Cheias de Charme Studio, cada detalhe é pensado para realçar sua beleza única. 
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-secondary/30">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            
+            {/* Coluna da Esquerda: Textos e Botões */}
+            <div className="text-center lg:text-left animate-fade-up">
+              <div className="space-y-4">
+                <img src={logo} alt="Cheias de Charme" className="h-20 lg:h-24 w-auto mx-auto lg:mx-0" />
+              </div>
+
+              <p className="text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed mt-8">
+                No Cheias de Charme Studio, cada detalhe é pensado para realçar sua beleza única.
                 Manicure e estética premium em Suzano-SP.
               </p>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button 
-                variant="hero" 
-                size="xl"
-                onClick={() => handleWhatsAppClick('hero_primary')}
-                className="group w-full sm:w-auto"
-              >
-                <Phone className="w-5 h-5 mr-3 group-hover:animate-pulse" />
-                Agendar Agora
-                <ArrowRight className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button 
-                variant="secondary" 
-                size="xl"
-                onClick={handleCalendarClick}
-                className="w-full sm:w-auto"
-              >
-                <Calendar className="w-5 h-5 mr-3" />
-                Ver Disponibilidade
-              </Button>
-            </div>
-
-            <div className="flex items-center justify-center space-x-6 text-sm text-muted-foreground">
+              
+              <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Button 
+                  variant="primary" 
+                  size="lg"
+                  onClick={() => handleWhatsAppClick('hero_primary')}
+                  className="group"
+                >
+                  <Phone className="w-4 h-4 mr-2 group-hover:animate-pulse" />
+                  Agendar Agora
+                </Button>
+                <Button 
+                  variant="secondary" 
+                  size="lg"
+                  onClick={handleCalendarClick}
+                >
+                  <Calendar className="w-4 h-4 mr-2" />
+                  Ver Disponibilidade
+                </Button>
+              </div>
+              <div className="flex items-center justify-center lg:justify-start space-x-6 text-sm text-muted-foreground mt-8">
               <div className="flex items-center space-x-2">
                 <Shield className="w-4 h-4 text-primary" />
                 <span>Higiene Impecável</span>
@@ -128,6 +119,19 @@ const Home = () => {
                 <span>Horário Flexível</span>
               </div>
             </div>
+            </div>
+
+
+            {/* Coluna da Direita: Imagem PNG */}
+            <div className="relative hidden lg:flex items-center justify-center">
+              <img
+                src={Maodeitada}
+                alt="Manicure premium no Cheias de Charme Studio"
+                className="relative w-auto h-auto max-h-[500px]"
+                loading="eager"
+              />
+            </div>
+
           </div>
         </div>
       </section>
@@ -137,10 +141,10 @@ const Home = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16 animate-fade-up">
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
-              Nossos Serviços
+              Nossos Pacotes em Destaque
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Experiências personalizadas que celebram sua beleza única com o mais alto padrão de qualidade.
+              Combinações pensadas para oferecer uma experiência completa de cuidado e beleza.
             </p>
           </div>
 
@@ -148,7 +152,7 @@ const Home = () => {
             {services.map((service, index) => (
               <Card 
                 key={service.title}
-                className="card-premium group hover:scale-105 transition-all duration-500 overflow-hidden animate-fade-up"
+                className="card-premium group hover:scale-105 transition-all duration-500 overflow-hidden animate-fade-up rounded-[3rem]"
                 style={{ animationDelay: `${index * 150}ms` }}
               >
                 <div className="aspect-[4/3] overflow-hidden">
@@ -224,7 +228,7 @@ const Home = () => {
             {testimonials.map((testimonial, index) => (
               <Card 
                 key={testimonial.name}
-                className="card-premium p-6 space-y-4 animate-fade-up"
+                className="card-premium p-6 space-y-4 animate-fade-up rounded-[3rem]"
                 style={{ animationDelay: `${index * 150}ms` }}
               >
                 <div className="flex items-center space-x-1">

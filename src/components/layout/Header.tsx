@@ -64,7 +64,7 @@ const Header = () => {
           {/* CTA Button */}
           <div className="hidden lg:flex">
             <Button 
-              variant="cta" 
+              variant="primary" 
               size="lg"
               onClick={handleWhatsAppClick}
               className="group"

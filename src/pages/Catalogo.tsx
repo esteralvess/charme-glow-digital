@@ -1,89 +1,160 @@
-import React from 'react';
-import { Phone, Star, Clock } from 'lucide-react';
-import { Button } from '@/components/ui/button-premium';
+import React, { useState } from 'react';
+import { Phone, Star, Clock, Search } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import Sobrancelha from '@/assets/sobrancelha.png';
+import PeMao from '@/assets/pe-mao.png';
+import PeMaoGel from '@/assets/pe-mao-gel.png';
+import Mao from '@/assets/esmaltacao-mao.png';
+import Micro from '@/assets/micro.png';
+import Pe from '@/assets/pe.png';
+import MaoGel from '@/assets/gel.png';
+import SPA from '@/assets/SPApe.png';
+import Cuticulagem from '@/assets/cuticula.png';
+import Tratamento from '@/assets/tratamento.png';
+import Henna from '@/assets/henna.png';
+import Alogamento from '@/assets/alongamento.png';
+import Restauracao from '@/assets/restauracao.png';
+import Cera from '@/assets/cera.png';
+
+// --- IMAGENS DE EXEMPLO ---
+// Para que o código funcione, precisamos de imagens. Criei placeholders para você.
+// O ideal é que você substitua estas URLs por fotos reais dos seus serviços.
+const placeholderImage = (text: string) => `https://placehold.co/400x300/FBF9F5/4D4540?text=${text.replace(' ', '+')}`;
+
+const allServices = [
+  {
+    category: 'Sobrancelhas',
+    name: 'Design de Sobrancelha',
+    description: 'Modelagem profissional que harmoniza e valoriza o formato do seu rosto, realçando seu olhar.',
+    duration: '30 min',
+    price: 'A consultar',
+    popular: true,
+    image: Sobrancelha
+  },
+  {
+    category: 'Sobrancelhas',
+    name: 'Sobrancelha de Henna',
+    description: 'Aplicação de henna para preencher falhas e dar mais definição, com um resultado natural e marcante.',
+    duration: '45 min',
+    price: 'A consultar',
+    popular: false,
+    image: Henna
+  },
+  {
+    category: 'Sobrancelhas',
+    name: 'Micropigmentação',
+    description: 'Técnica avançada para um design duradouro e sobrancelhas perfeitamente desenhadas fio a fio.',
+    duration: '2 horas',
+    price: 'A consultar',
+    popular: true,
+    image: Micro
+  },
+  {
+    category: 'Mãos e Pés',
+    name: 'Pé - Esmaltação Tradicional',
+    description: 'Cuidado completo dos pés com cutilagem, hidratação e a cor de esmalte da sua preferência.',
+    duration: '60 min',
+    price: 'A consultar',
+    popular: false,
+    image: Pe
+  },
+  {
+    category: 'Mãos e Pés',
+    name: 'Mão - Esmaltação Tradicional',
+    description: 'Cuidado clássico das mãos, deixando suas unhas impecáveis com a esmaltação perfeita.',
+    duration: '45 min',
+    price: 'A consultar',
+    popular: true,
+    image: Mao
+  },
+  {
+    category: 'Mãos e Pés',
+    name: 'Pé - Esmaltação em Gel',
+    description: 'Unhas dos pés perfeitas por semanas, com brilho intenso e secagem imediata. Ideal para viagens.',
+    duration: '75 min',
+    price: 'A consultar',
+    popular: false,
+    image: PeMaoGel
+  },
+  {
+    category: 'Mãos e Pés',
+    name: 'Mão - Esmaltação em Gel',
+    description: 'A durabilidade e o brilho do esmalte em gel para unhas das mãos impecáveis por mais tempo.',
+    duration: '60 min',
+    price: 'A consultar',
+    popular: true,
+    image: MaoGel
+  },
+  {
+    category: 'Mãos e Pés',
+    name: 'SPA dos Pés',
+    description: 'Um ritual de relaxamento e cuidado profundo para renovar e hidratar seus pés.',
+    duration: '90 min',
+    price: 'A consultar',
+    popular: false,
+    image: SPA
+  },
+  {
+    category: 'Tratamentos de Unhas',
+    name: 'Tratamento de Unha',
+    description: 'Protocolo focado em fortalecer, nutrir e recuperar a saúde de unhas fracas e quebradiças.',
+    duration: '30 min',
+    price: 'A consultar',
+    popular: false,
+    image: Tratamento
+  },
+  {
+    category: 'Tratamentos de Unhas',
+    name: 'Cuticulagem',
+    description: 'Serviço de remoção e hidratação precisa das cutículas para um acabamento limpo e profissional.',
+    duration: '20 min',
+    price: 'A consultar',
+    popular: false,
+    image: Cuticulagem
+  },
+  {
+    category: 'Tratamentos de Unhas',
+    name: 'Blindagem de Gel',
+    description: 'Camada protetora de gel que aumenta a resistência da unha natural, evitando quebras.',
+    duration: '60 min',
+    price: 'A consultar',
+    popular: false,
+    image: PeMao
+  },
+  {
+    category: 'Tratamentos de Unhas',
+    name: 'Restauração de Unha',
+    description: 'Recuperação de unhas danificadas ou roídas com técnicas de reconstrução.',
+    duration: '45 min',
+    price: 'A consultar',
+    popular: false,
+    image: Restauracao
+  },
+  {
+    category: 'Tratamentos de Unhas',
+    name: 'Alongamento de Unha',
+    description: 'Aumente o comprimento das suas unhas com naturalidade e resistência. Várias técnicas disponíveis.',
+    duration: '2.5 horas',
+    price: 'A consultar',
+    popular: false,
+    image: Alogamento
+  },
+  {
+    category: 'Outros Serviços',
+    name: 'Depilação com Cera',
+    description: 'Remoção de pelos com cera de alta qualidade, garantindo uma pele lisa e macia. (Consultar áreas)',
+    duration: 'Varia',
+    price: 'A consultar',
+    popular: false,
+    image: Cera
+  },
+];
 
 const Catalogo = () => {
-  const categories = [
-    {
-      title: 'Manicure',
-      services: [
-        {
-          name: 'Manicure Simples',
-          description: 'Cuidado básico com as unhas, cutículas e esmaltação.',
-          duration: '45 min',
-          price: 'R$ 35',
-          popular: false
-        },
-        {
-          name: 'Manicure Premium',
-          description: 'Tratamento completo com hidratação especial e esmaltação de alta qualidade.',
-          duration: '60 min',
-          price: 'R$ 50',
-          popular: true
-        },
-        {
-          name: 'Nail Art',
-          description: 'Arte personalizada nas unhas com designs exclusivos.',
-          duration: '90 min',
-          price: 'R$ 80',
-          popular: false
-        }
-      ]
-    },
-    {
-      title: 'Estética Facial',
-      services: [
-        {
-          name: 'Limpeza de Pele',
-          description: 'Limpeza profunda para renovar e purificar a pele.',
-          duration: '60 min',
-          price: 'R$ 80',
-          popular: true
-        },
-        {
-          name: 'Hidratação Facial',
-          description: 'Tratamento intensivo de hidratação com produtos premium.',
-          duration: '45 min',
-          price: 'R$ 90',
-          popular: false
-        },
-        {
-          name: 'Peeling Facial',
-          description: 'Renovação celular para uma pele mais jovem e luminosa.',
-          duration: '75 min',
-          price: 'R$ 120',
-          popular: false
-        }
-      ]
-    },
-    {
-      title: 'Cuidados Especiais',
-      services: [
-        {
-          name: 'Dia da Noiva',
-          description: 'Pacote completo para o seu dia especial.',
-          duration: '3 horas',
-          price: 'A partir de R$ 300',
-          popular: true
-        },
-        {
-          name: 'Tratamento Anti-idade',
-          description: 'Protocolo especializado para prevenir e tratar sinais de envelhecimento.',
-          duration: '90 min',
-          price: 'R$ 180',
-          popular: false
-        },
-        {
-          name: 'Spa Day',
-          description: 'Experiência completa de relaxamento e cuidados.',
-          duration: '4 horas',
-          price: 'R$ 400',
-          popular: false
-        }
-      ]
-    }
-  ];
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('Todos');
 
   const handleWhatsAppClick = (serviceName: string) => {
     const message = encodeURIComponent(`Olá! Gostaria de agendar o serviço: ${serviceName}`);
@@ -91,10 +162,18 @@ const Catalogo = () => {
     window.open(whatsappUrl, '_blank');
   };
 
+  const categories = ['Todos', ...new Set(allServices.map(service => service.category))];
+
+  const filteredServices = allServices.filter(service => {
+    const matchesCategory = selectedCategory === 'Todos' || service.category === selectedCategory;
+    const matchesSearch = service.name.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
+
   return (
     <main className="min-h-screen pt-20 lg:pt-28">
       {/* Header */}
-      <section className="py-12 lg:py-16 bg-gradient-hero">
+      <section className="py-12 lg:py-16 bg-secondary/50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center space-y-4 animate-fade-up">
             <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
@@ -108,69 +187,99 @@ const Catalogo = () => {
         </div>
       </section>
 
-      {/* Services */}
-      <section className="py-16 lg:py-24">
+      {/* Filtros e Pesquisa */}
+      <section className="py-8 sticky top-16 lg:top-20 bg-background/80 backdrop-blur-md z-40 border-b">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-16">
-            {categories.map((category, categoryIndex) => (
-              <div key={category.title} className="space-y-8">
-                <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground text-center animate-fade-up">
-                  {category.title}
-                </h2>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {category.services.map((service, serviceIndex) => (
-                    <Card 
-                      key={service.name}
-                      className="card-premium p-6 space-y-4 relative group hover:scale-105 transition-all duration-300 animate-fade-up"
-                      style={{ animationDelay: `${(categoryIndex * 3 + serviceIndex) * 100}ms` }}
-                    >
-                      {service.popular && (
-                        <div className="absolute -top-3 -right-3 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-semibold flex items-center space-x-1">
-                          <Star className="w-3 h-3 fill-current" />
-                          <span>Popular</span>
-                        </div>
-                      )}
-                      
-                      <div className="space-y-3">
-                        <h3 className="font-display text-xl font-semibold text-foreground">
-                          {service.name}
-                        </h3>
-                        <p className="text-muted-foreground text-sm leading-relaxed">
-                          {service.description}
-                        </p>
-                      </div>
-                      
-                      <div className="flex items-center justify-between text-sm">
-                        <div className="flex items-center space-x-1 text-muted-foreground">
-                          <Clock className="w-4 h-4 text-primary" />
-                          <span>{service.duration}</span>
-                        </div>
-                        <div className="font-semibold text-primary text-lg">
-                          {service.price}
-                        </div>
-                      </div>
-                      
-                      <Button 
-                        variant="primary" 
-                        size="sm"
-                        onClick={() => handleWhatsAppClick(service.name)}
-                        className="w-full group-hover:shadow-premium transition-all duration-300"
-                      >
-                        <Phone className="w-4 h-4 mr-2" />
-                        Agendar Agora
-                      </Button>
-                    </Card>
-                  ))}
-                </div>
-              </div>
-            ))}
+          <div className="flex flex-col md:flex-row gap-4 items-center">
+            <div className="relative w-full md:w-1/3">
+              <Input 
+                type="text"
+                placeholder="Pesquisar por um serviço..."
+                className="pl-10"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+            </div>
+            <div className="flex gap-2 overflow-x-auto pb-2">
+              {categories.map(category => (
+                <Button 
+                  key={category}
+                  variant={selectedCategory === category ? 'default' : 'outline'}
+                  onClick={() => setSelectedCategory(category)}
+                  className="whitespace-nowrap"
+                >
+                  {category}
+                </Button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
+      {/* Serviços */}
+      <section className="py-16 lg:py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredServices.map((service, index) => (
+              <Card 
+                key={service.name}
+                className="flex flex-col overflow-hidden transition-all duration-300 animate-fade-up border-border/60 hover:shadow-lg"
+                style={{ animationDelay: `${index * 50}ms` }}
+              >
+                <div className="relative">
+                  <img src={service.image} alt={service.name} className="w-full h-48 object-cover" />
+                  {service.popular && (
+                    <div className="absolute top-3 right-3 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-semibold flex items-center space-x-1">
+                      <Star className="w-3 h-3 fill-current" />
+                      <span>Popular</span>
+                    </div>
+                  )}
+                </div>
+                
+                <div className="p-6 flex flex-col flex-grow space-y-4">
+                  <div className="space-y-2 flex-grow">
+                    <h3 className="font-display text-xl font-semibold text-foreground">
+                      {service.name}
+                    </h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
+                  
+                  <div className="flex items-center justify-between text-sm pt-4 border-t">
+                    <div className="flex items-center space-x-1 text-muted-foreground">
+                      <Clock className="w-4 h-4 text-primary" />
+                      <span>{service.duration}</span>
+                    </div>
+                    <div className="font-semibold text-primary text-lg">
+                      {service.price}
+                    </div>
+                  </div>
+                  
+                  <Button 
+                    variant="default"
+                    size="sm"
+                    onClick={() => handleWhatsAppClick(service.name)}
+                    className="w-full"
+                  >
+                    <Phone className="w-4 h-4 mr-2" />
+                    Agendar Agora
+                  </Button>
+                </div>
+              </Card>
+            ))}
+          </div>
+          {filteredServices.length === 0 && (
+            <div className="text-center py-16">
+              <p className="text-muted-foreground">Nenhum serviço encontrado. Tente uma pesquisa ou filtro diferente.</p>
+            </div>
+          )}
+        </div>
+      </section>
+
       {/* CTA */}
-      <section className="py-16 lg:py-24 bg-secondary/20">
+      <section className="py-16 lg:py-24 bg-secondary/50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center space-y-6 animate-fade-up">
             <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground">
@@ -181,7 +290,7 @@ const Catalogo = () => {
               criar o tratamento perfeito para suas necessidades específicas.
             </p>
             <Button 
-              variant="hero" 
+              variant="default"
               size="lg"
               onClick={() => handleWhatsAppClick('Consulta personalizada')}
               className="group"
