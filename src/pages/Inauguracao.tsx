@@ -30,7 +30,7 @@ const formSchema = z.object({
   }),
 });
 
-const Lancamento = () => {
+const Inauguracao = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -197,4 +197,4 @@ const Lancamento = () => {
   );
 };
 
-export default Lancamento;
+export default Inauguracao;

@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, MapPin, Instagram, Facebook, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button-premium';
+import logo from '@/assets/logo.png';
+
 
 const Footer = () => {
   const handleWhatsAppClick = () => {
@@ -24,18 +26,12 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-4">
-            <Link to="/" className="flex items-center space-x-2">
-              <div className="flex flex-col">
-                <span className="font-display text-xl font-semibold text-foreground">
-                  Cheias de Charme
-                </span>
-                <span className="font-sans text-sm text-muted-foreground tracking-wider uppercase">
-                  Studio
-                </span>
-              </div>
+            <Link to="/" className="flex items-center group">
+              <img src={logo} alt="Cheias de Charme Studio" className="h-10 w-auto" />
             </Link>
+
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Estúdio de beleza premium em Suzano-SP, especializado em manicure e estética. 
+              Studio em Suzano-SP, especializado em manicure e estética. 
               Realçamos sua elegância natural com cuidado personalizado.
             </p>
           </div>
@@ -55,8 +51,8 @@ const Footer = () => {
               <Link to="/avaliacoes" className="text-muted-foreground hover:text-primary transition-colors text-sm">
                 Avaliações
               </Link>
-              <Link to="/lancamento" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                Lançamentos
+              <Link to="/atendimento-express" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                Atendimento Express
               </Link>
               <Link to="/contato" className="text-muted-foreground hover:text-primary transition-colors text-sm">
                 Contato

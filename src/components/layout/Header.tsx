@@ -13,7 +13,8 @@ const Header = () => {
     { path: '/', label: 'Home' },
     { path: '/catalogo', label: 'Catálogo' },
     { path: '/avaliacoes', label: 'Avaliações' },
-    { path: '/lancamento', label: 'Lançamento' },
+    { path: '/inauguracao', label: 'Inauguração' },
+    { path: '/atendimento-express', label: 'Atendimento Express' },
     { path: '/contato', label: 'Contato' },
   ];
 
@@ -29,7 +30,7 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border/60">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
+        {/* Logo */}
         <Link to="/" className="flex items-center group">
           <img src={logo} alt="Cheias de Charme Studio" className="h-10 w-auto" />
         </Link>

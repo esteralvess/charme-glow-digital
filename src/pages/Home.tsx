@@ -3,13 +3,10 @@ import { Link } from 'react-router-dom';
 import { Star, ArrowRight, Clock, Shield, Heart, Sparkles, Phone, Calendar, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button-premium';
 import { Card } from '@/components/ui/card';
-import heroImage from '@/assets/hero-manicure.jpg';
 import Sobrancelha from '@/assets/sobrancelha.png';
 import PeMaoGel from '@/assets/pe-mao-gel.png';
 import MaoGel from '@/assets/gel.png';
-import logo from '@/assets/logo.png';
-import Maodeitada from '@/assets/Maodeitada.png';
-import Maoemped from '@/assets/Maoempe.png';
+import MaoFundo from '@/assets/mao-fundo-2.png'; // Sua nova imagem com fundo
 
 const Home = () => {
   const services = [
@@ -58,37 +55,48 @@ const Home = () => {
   ];
 
   const handleWhatsAppClick = (utmCampaign: string) => {
-    const message = encodeURIComponent('Olá! Gostaria de agendar um horário no Cheias de Charme Studio.');
-    const whatsappUrl = `https://wa.me/5511999999999?text=${message}&utm_source=website&utm_medium=cta&utm_campaign=${utmCampaign}`;
+    let message = 'Olá! Gostaria de agendar um horário no Cheias de Charme Studio.';
+    if (utmCampaign === 'agendar_encaixe') {
+      message = 'Olá! Gostaria de verificar a disponibilidade para um Atendimento Express.';
+    }
+    const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}&utm_source=website&utm_medium=cta&utm_campaign=${utmCampaign}`;
     window.open(whatsappUrl, '_blank');
   };
 
   const handleCalendarClick = () => {
-    // Placeholder para integração com Google Calendar
     window.open('https://calendar.google.com', '_blank');
   };
 
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-secondary/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative min-h-screen flex items-center bg-secondary/30 overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             
             {/* Coluna da Esquerda: Textos e Botões */}
-            <div className="text-center lg:text-left animate-fade-up">
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground">
+            <div className="text-center lg:text-left animate-fade-up pt-16 lg:pt-0">
+              <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
                 Unhas que encantam, charme que marca.
               </h1>
 
               <p className="text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed mt-8">
-                No Studio Cheias de Charme, cada detalhe é pensado para realçar sua beleza única.
-                Manicure e estética premium em Suzano-SP.
+                No Studio Cheias de Charme, cada detalhe é cuidadosamente pensado para valorizar sua beleza única. Manicure e estética premium em Suzano-SP.
               </p>
-              
-              <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button 
-                  variant="primary" 
+
+              {/* Imagem no Mobile (abaixo do texto) */}
+              <div className="lg:hidden mt-8 flex justify-center">
+                <img
+                  src={MaoFundo}
+                  alt="Manicure premium no Cheias de Charme Studio"
+                  className="w-full max-w-xs h-auto object-contain rounded-2xl"
+                  loading="eager"
+                />
+              </div>
+
+              <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Button
+                  variant="primary"
                   size="lg"
                   onClick={() => handleWhatsAppClick('hero_primary')}
                   className="group"
@@ -105,38 +113,36 @@ const Home = () => {
                   Ver Disponibilidade
                 </Button>
               </div>
-              <div className="flex items-center justify-center lg:justify-start space-x-6 text-sm text-muted-foreground mt-8">
-              <div className="flex items-center space-x-2">
-                <Shield className="w-4 h-4 text-primary" />
-                <span>Higiene Impecável</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Star className="w-4 h-4 text-primary" />
-                <span>5.0 Estrelas</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Clock className="w-4 h-4 text-primary" />
-                <span>Horário Flexível</span>
+              <div className="flex items-center justify-center lg:justify-start space-x-6 text-sm text-muted-foreground mt-10">
+                <div className="flex items-center space-x-2">
+                  <Shield className="w-4 h-4 text-primary" />
+                  <span>Higiene Impecável</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Star className="w-4 h-4 text-primary" />
+                  <span>Qualidade Comprovada</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Clock className="w-4 h-4 text-primary" />
+                  <span>Atendimento Express</span>
+                </div>
               </div>
             </div>
-            </div>
-
-
-            {/* Coluna da Direita: Imagem PNG */}
-            <div className="relative hidden lg:flex items-center justify-center">
-              <img
-                src={Maodeitada}
-                alt="Manicure premium no Cheias de Charme Studio"
-                className="relative w-auto h-auto max-h-[500px]"
-                loading="eager"
-              />
-            </div>
-
           </div>
+        </div>
+
+        {/* Coluna da Direita: Imagem no Desktop */}
+        <div className="hidden lg:flex absolute top-0 right-0 h-full w-full lg:w-1/2 z-0 items-end justify-center">
+          <img
+            src={MaoFundo}
+            alt="Manicure premium no Cheias de Charme Studio"
+            className="w-full h-auto max-h-[80%] object-contain"
+            loading="eager"
+          />
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Services Section (O resto do código permanece o mesmo) */}
       <section className="py-20 lg:py-32 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16 animate-fade-up">
@@ -147,7 +153,6 @@ const Home = () => {
               Combinações pensadas para oferecer uma experiência completa de cuidado e beleza.
             </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <Card 
@@ -172,7 +177,6 @@ const Home = () => {
                       {service.description}
                     </p>
                   </div>
-                  
                   <div className="space-y-3">
                     <ul className="space-y-1">
                       {service.highlights.map((highlight) => (
@@ -182,7 +186,6 @@ const Home = () => {
                         </li>
                       ))}
                     </ul>
-                    
                     <div className="flex items-center justify-between pt-2">
                       <span className="font-semibold text-primary text-lg">
                         {service.price}
@@ -200,7 +203,6 @@ const Home = () => {
               </Card>
             ))}
           </div>
-
           <div className="text-center mt-12">
             <Link to="/catalogo">
               <Button variant="primary" size="lg" className="group">
@@ -208,6 +210,48 @@ const Home = () => {
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Atendimento Express Section */}
+      <section className="py-20 lg:py-32 bg-secondary/10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative max-w-4xl mx-auto text-center animate-fade-up p-8 lg:p-16">
+            <div className="absolute inset-0 bg-primary rounded-[2rem] -z-10"></div>
+            <div className="relative z-10">
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-foreground">
+                Precisa de Atendimento Imediato?
+              </h2>
+              <p className="text-lg text-primary-foreground/90 max-w-2xl mx-auto leading-relaxed mt-8">
+                Aqui no <span className="font-semibold text-white">Studio Cheias de Charme</span>, 
+                sempre temos horários disponíveis para você.  
+                E se surgir uma necessidade de última hora, oferecemos o 
+                <span className="font-semibold text-white"> Atendimento Express</span>: um encaixe imediato com taxa adicional, 
+                para garantir que sua beleza não espere.
+              </p>
+              <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+                <Link to="/atendimento-express">
+                  <Button 
+                    variant="secondary" 
+                    size="lg" 
+                    className="group bg-white text-primary hover:bg-white/10 w-full"
+                  >              
+                    <Sparkles className="w-5 h-5 mr-4" />
+                    Saiba Mais
+                  </Button>
+                </Link>
+                <Button 
+                  variant="secondary" 
+                  size="lg" 
+                  className="group bg-transparent border-white text-white hover:bg-white/20"
+                  onClick={() => handleWhatsAppClick('agendar_encaixe')}
+                >              
+                  <Calendar className="w-5 h-5 mr-2" />
+                  Agendar Encaixe
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -223,7 +267,6 @@ const Home = () => {
               A satisfação das nossas clientes é nossa maior inspiração e motivação.
             </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <Card 
@@ -236,11 +279,9 @@ const Home = () => {
                     <Star key={i} className="w-4 h-4 fill-primary text-primary" />
                   ))}
                 </div>
-                
                 <blockquote className="text-foreground italic leading-relaxed">
                   "{testimonial.text}"
                 </blockquote>
-                
                 <div className="space-y-1">
                   <div className="font-semibold text-foreground">
                     {testimonial.name}
@@ -252,16 +293,15 @@ const Home = () => {
               </Card>
             ))}
           </div>
-
           <div className="text-center mt-12 flex flex-col sm:flex-row justify-center gap-4">
             <Link to="/avaliacoes">
-              <Button variant="secondary" size="lg" className="group">
+              <Button variant="secondary" size="lg" className="group w-full">
                 Ver Mais Avaliações
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
             <Link to="/avaliacoes/deixar-avaliacao">
-              <Button variant="primary" size="lg" className="group">
+              <Button variant="primary" size="lg" className="grou w-full">
                 <MessageCircle className="w-4 h-4 mr-2" />
                 Deixar a Sua Avaliação
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -271,7 +311,6 @@ const Home = () => {
         </div>
       </section>
 
-
     {/* Launch Cocktail Section */}
       <section className="py-20 lg:py-32 bg-primary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -280,17 +319,16 @@ const Home = () => {
               <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-foreground">
                 Você é nossa convidada especial.
               </h2>
-              <p className="text-lg text-primary-foreground leading-relaxed">
+              <p className="text-lg text-primary-foreground/90 leading-relaxed">
                 Participe do nosso coquetel de lançamento e celebre conosco.
               </p>
             </div>
-            
             <div className="pt-4">
               <Link to="/lancamento">
                 <Button 
                   variant="secondary" 
                   size="xl" 
-                  className="group border-primary-foreground text-primary-foreground"
+                  className="group bg-primary-foreground/20 border-primary-foreground text-primary-foreground hover:bg-primary-foreground/30"
                 >
                   <Sparkles className="w-5 h-5 mr-3" />
                   Confirmar Presença
@@ -316,7 +354,6 @@ const Home = () => {
                 com nosso atendimento personalizado e ambiente acolhedor.
               </p>
             </div>
-            
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button 
                 variant="hero" 
@@ -328,14 +365,7 @@ const Home = () => {
                 Agendar pelo WhatsApp
                 <ArrowRight className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Link to="/contato">
-                <Button variant="secondary" size="xl" className="w-full sm:w-auto">
-                  <Heart className="w-5 h-5 mr-3" />
-                  Outras Formas de Contato
-                </Button>
-              </Link>
             </div>
-
             <div className="pt-8 border-t border-border/60">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
                 <div className="space-y-2">

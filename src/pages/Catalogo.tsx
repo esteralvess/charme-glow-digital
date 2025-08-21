@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Phone, Star, Clock, Search } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/button-premium';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Sobrancelha from '@/assets/sobrancelha.png';
 import PeMao from '@/assets/pe-mao.png';
 import PeMaoGel from '@/assets/pe-mao-gel.png';
@@ -18,11 +19,7 @@ import Alogamento from '@/assets/alongamento.png';
 import Restauracao from '@/assets/restauracao.png';
 import Cera from '@/assets/cera.png';
 
-// --- IMAGENS DE EXEMPLO ---
-// Para que o código funcione, precisamos de imagens. Criei placeholders para você.
-// O ideal é que você substitua estas URLs por fotos reais dos seus serviços.
-const placeholderImage = (text: string) => `https://placehold.co/400x300/FBF9F5/4D4540?text=${text.replace(' ', '+')}`;
-
+// --- TODOS OS SERVIÇOS COM SUAS IMAGENS ---
 const allServices = [
   {
     category: 'Sobrancelhas',
@@ -188,30 +185,32 @@ const Catalogo = () => {
       </section>
 
       {/* Filtros e Pesquisa */}
-      <section className="py-8 sticky top-16 lg:top-20 bg-background/80 backdrop-blur-md z-40 border-b">
+      <section className="py-6 sticky top-16 lg:top-20 bg-background/80 backdrop-blur-md z-40 border-b">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row gap-4 items-center">
-            <div className="relative w-full md:w-1/3">
+          <div className="flex flex-col sm:flex-row gap-4 items-center">
+            <div className="relative w-full sm:w-2/3">
               <Input 
                 type="text"
                 placeholder="Pesquisar por um serviço..."
-                className="pl-10"
+                className="pl-10 h-12"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             </div>
-            <div className="flex gap-2 overflow-x-auto pb-2">
-              {categories.map(category => (
-                <Button 
-                  key={category}
-                  variant={selectedCategory === category ? 'default' : 'outline'}
-                  onClick={() => setSelectedCategory(category)}
-                  className="whitespace-nowrap"
-                >
-                  {category}
-                </Button>
-              ))}
+            <div className="w-full sm:w-1/3">
+              <Select onValueChange={setSelectedCategory} defaultValue="Todos">
+                <SelectTrigger className="w-full h-12">
+                  <SelectValue placeholder="Filtrar por categoria" />
+                </SelectTrigger>
+                <SelectContent>
+                  {categories.map(category => (
+                    <SelectItem key={category} value={category}>
+                      {category}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
           </div>
         </div>
@@ -224,7 +223,7 @@ const Catalogo = () => {
             {filteredServices.map((service, index) => (
               <Card 
                 key={service.name}
-                className="flex flex-col overflow-hidden transition-all duration-300 animate-fade-up border-border/60 hover:shadow-lg"
+                className="flex flex-col overflow-hidden transition-all duration-300 animate-fade-up border-border/60 hover:shadow-lg rounded-[2rem]"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
                 <div className="relative">
@@ -253,12 +252,12 @@ const Catalogo = () => {
                       <span>{service.duration}</span>
                     </div>
                     <div className="font-semibold text-primary text-lg">
-                      {service.price}
+                      A consultar
                     </div>
                   </div>
                   
                   <Button 
-                    variant="default"
+                    variant="primary"
                     size="sm"
                     onClick={() => handleWhatsAppClick(service.name)}
                     className="w-full"
@@ -290,7 +289,7 @@ const Catalogo = () => {
               criar o tratamento perfeito para suas necessidades específicas.
             </p>
             <Button 
-              variant="default"
+              variant="primary"
               size="lg"
               onClick={() => handleWhatsAppClick('Consulta personalizada')}
               className="group"

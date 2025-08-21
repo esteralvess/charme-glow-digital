@@ -21,10 +21,10 @@ const Contato = () => {
       icon: Instagram,
       title: 'Instagram',
       description: 'Veja nossos trabalhos e novidades',
-      action: 'Seguir @cheiasdecharmestudio',
-      primary: false,
+      action: 'Seguir',
+      primary: true,
       onClick: () => {
-        window.open('https://instagram.com/cheiasdecharmestudio', '_blank');
+        window.open('https://instagram.com/cheiasdecharmestudio.unhas', '_blank');
       }
     },
     {
@@ -66,14 +66,6 @@ const Contato = () => {
     {
       question: 'Como faço para agendar um horário?',
       answer: 'O agendamento pode ser feito pelo WhatsApp, onde temos resposta rápida e conseguimos encontrar o melhor horário para você. Também aceitamos agendamentos por telefone ou pessoalmente.'
-    },
-    {
-      question: 'Vocês trabalham com que marcas de produtos?',
-      answer: 'Utilizamos apenas produtos premium de marcas reconhecidas no mercado de beleza, garantindo qualidade e segurança em todos os nossos tratamentos.'
-    },
-    {
-      question: 'É necessário fazer teste de alergia?',
-      answer: 'Para alguns tratamentos, recomendamos o teste de sensibilidade, especialmente para clientes com pele sensível ou histórico de alergias. Isso é feito de forma gratuita antes do procedimento.'
     },
     {
       question: 'Qual a política de cancelamento?',

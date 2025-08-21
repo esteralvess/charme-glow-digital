@@ -42,51 +42,6 @@ const Avaliacoes = () => {
       comment: 'Criatividade e técnica em cada detalhe. As artes nas unhas são verdadeiras obras de arte! Recebo elogios onde quer que eu vá.',
       verified: true
     },
-    {
-      id: 5,
-      name: 'Patricia Oliveira',
-      service: 'Hidratação Facial',
-      rating: 5,
-      date: '2024-01-02',
-      comment: 'Produtos de primeira qualidade e resultados visíveis desde a primeira sessão. Minha pele nunca esteve tão hidratada e luminosa.',
-      verified: true
-    },
-    {
-      id: 6,
-      name: 'Camila Torres',
-      service: 'Manicure Simples',
-      rating: 5,
-      date: '2023-12-28',
-      comment: 'Atendimento sempre pontual e cuidadoso. Mesmo no serviço mais simples, a qualidade é excepcional. Super recomendo!',
-      verified: true
-    },
-    {
-      id: 7,
-      name: 'Renata Almeida',
-      service: 'Peeling Facial',
-      rating: 5,
-      date: '2023-12-25',
-      comment: 'Resultado incrível! Minha pele ficou completamente renovada. O tratamento foi suave e os cuidados pós-procedimento foram perfeitos.',
-      verified: true
-    },
-    {
-      id: 8,
-      name: 'Isabella Ferreira',
-      service: 'Spa Day',
-      rating: 5,
-      date: '2023-12-20',
-      comment: 'Uma experiência transformadora! Passei o dia inteiro me cuidando e saí completamente renovada. Vale cada centavo investido.',
-      verified: true
-    },
-    {
-      id: 9,
-      name: 'Luciana Barbosa',
-      service: 'Tratamento Anti-idade',
-      rating: 5,
-      date: '2023-12-18',
-      comment: 'Notei diferença já na primeira sessão. O protocolo é realmente eficaz e os produtos utilizados são de altíssima qualidade.',
-      verified: true
-    }
   ];
 
   const stats = {
@@ -149,7 +104,7 @@ const Avaliacoes = () => {
       <section className="py-12 bg-secondary/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div className="grid grid-cols-3 gap-4 text-center">
               <div className="space-y-2 animate-fade-up">
                 <div className="text-3xl sm:text-4xl font-bold text-primary font-display">
                   {stats.totalReviews}+

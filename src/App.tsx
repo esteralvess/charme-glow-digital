@@ -11,10 +11,11 @@ import Footer from "./components/layout/Footer";
 const Home = lazy(() => import("./pages/Home"));
 const Catalogo = lazy(() => import("./pages/Catalogo"));
 const Avaliacoes = lazy(() => import("./pages/Avaliacoes"));
-const Lancamento = lazy(() => import("./pages/Lancamento"));
+const Inauguracao = lazy(() => import("./pages/Inauguracao"));
 const Contato = lazy(() => import("./pages/Contato"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-const DeixarAvaliacao = lazy(() => import("./pages/DeixarAvaliacao")); // Adicionado: Nova página
+const DeixarAvaliacao = lazy(() => import("./pages/DeixarAvaliacao")); 
+const AtendimentoExpress = lazy(() => import("./pages/AtendimentoExpress"));
 
 const queryClient = new QueryClient();
 
@@ -39,8 +40,9 @@ const App = () => (
               <Route path="/catalogo" element={<Catalogo />} />
               <Route path="/avaliacoes" element={<Avaliacoes />} />
               <Route path="/avaliacoes/deixar-avaliacao" element={<DeixarAvaliacao />} /> {/* Adicionado: Nova rota */}
-              <Route path="/lancamento" element={<Lancamento />} />
+              <Route path="/inauguracao" element={<Inauguracao />} />
               <Route path="/contato" element={<Contato />} />
+              <Route path="/atendimento-express" element={<AtendimentoExpress />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
