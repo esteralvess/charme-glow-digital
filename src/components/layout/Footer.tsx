@@ -125,7 +125,7 @@ const Footer = () => {
         <div className="border-t border-border/60 mt-8 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
             <p className="text-muted-foreground text-sm">
-              © 2024 Cheias de Charme Studio. Todos os direitos reservados.
+              © 2025 Cheias de Charme Studio. Todos os direitos reservados.
             </p>
             <p className="text-muted-foreground text-sm">
               Suzano - SP

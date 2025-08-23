@@ -59,7 +59,7 @@ const Home = () => {
     if (utmCampaign === 'agendar_encaixe') {
       message = 'Olá! Gostaria de verificar a disponibilidade para um Atendimento Express.';
     }
-    const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}&utm_source=website&utm_medium=cta&utm_campaign=${utmCampaign}`;
+    const whatsappUrl = `https://wa.me/5511958525413?text=${encodeURIComponent(message)}&utm_source=website&utm_medium=cta&utm_campaign=${utmCampaign}`;
     window.open(whatsappUrl, '_blank');
   };
 

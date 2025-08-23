@@ -1,72 +1,75 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Star, Heart, Calendar, MessageCircle, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button-premium';
 import { Card } from '@/components/ui/card';
 
 const Avaliacoes = () => {
-  const reviews = [
-    {
-      id: 1,
-      name: 'Ana Carolina Mendes',
-      service: 'Manicure Premium',
-      rating: 5,
-      date: '2024-01-15',
-      comment: 'Simplesmente perfeito! O atendimento é impecável e o resultado sempre supera minhas expectativas. O ambiente é acolhedor e a profissional extremamente cuidadosa.',
-      verified: true
-    },
-    {
-      id: 2,
-      name: 'Mariana Silva Santos',
-      service: 'Limpeza de Pele',
-      rating: 5,
-      date: '2024-01-12',
-      comment: 'Profissionalismo e qualidade incomparáveis. Já sou cliente há mais de um ano e sempre saio satisfeita. Minha pele ficou renovada e com um brilho incrível!',
-      verified: true
-    },
-    {
-      id: 3,
-      name: 'Fernanda Costa Lima',
-      service: 'Dia da Noiva',
-      rating: 5,
-      date: '2024-01-08',
-      comment: 'O ambiente é acolhedor e relaxante. Cada detalhe é pensado para proporcionar uma experiência única. Meu dia especial ficou ainda mais perfeito!',
-      verified: true
-    },
-    {
-      id: 4,
-      name: 'Juliana Rodrigues',
-      service: 'Nail Art',
-      rating: 5,
-      date: '2024-01-05',
-      comment: 'Criatividade e técnica em cada detalhe. As artes nas unhas são verdadeiras obras de arte! Recebo elogios onde quer que eu vá.',
-      verified: true
-    },
-  ];
-
-  const stats = {
-    totalReviews: 127,
-    averageRating: 4.9,
-    fiveStars: 95,
-    fourStars: 8,
+  const [reviews, setReviews] = useState<any[]>([]);
+  const [stats, setStats] = useState<any>({
+    totalReviews: 0,
+    averageRating: 0,
+    fiveStars: 0,
+    fourStars: 0,
     threeStars: 0,
     twoStars: 0,
     oneStars: 0
-  };
+  });
 
   const handleWhatsAppClick = () => {
-    const message = encodeURIComponent('Olá! Vi as avaliações no site e gostaria de agendar um horário.');
+    const message = encodeURIComponent(
+      'Olá! Vi as avaliações no site e gostaria de agendar um horário.'
+    );
     const whatsappUrl = `https://wa.me/5511999999999?text=${message}&utm_source=website&utm_medium=avaliacoes&utm_campaign=agendamento`;
     window.open(whatsappUrl, '_blank');
   };
 
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('pt-BR', {
+  const formatDate = (dateString: string | number) => {
+    const date = typeof dateString === 'number' ? new Date(dateString) : new Date(dateString);
+    return date.toLocaleDateString('pt-BR', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
     });
   };
+
+  // 🚀 Buscar avaliações do Webhook do n8n
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        const res = await fetch('https://webhooks.gerenc.com/webhook/google-reviews');
+        const data = await res.json();
+
+        if (data?.result?.reviews) {
+          const googleReviews = data.result.reviews.map((r: any, i: number) => ({
+            id: i,
+            name: r.author_name,
+            service: 'Cliente Google',
+            rating: r.rating,
+            date: r.time * 1000, // timestamp convertido em milissegundos
+            comment: r.text,
+            verified: true
+          }));
+
+          setReviews(googleReviews);
+
+          setStats({
+            totalReviews: data.result.user_ratings_total,
+            averageRating: data.result.rating,
+            fiveStars: googleReviews.filter((r: any) => r.rating === 5).length,
+            fourStars: googleReviews.filter((r: any) => r.rating === 4).length,
+            threeStars: googleReviews.filter((r: any) => r.rating === 3).length,
+            twoStars: googleReviews.filter((r: any) => r.rating === 2).length,
+            oneStars: googleReviews.filter((r: any) => r.rating === 1).length
+          });
+        }
+      } catch (err) {
+        console.error('Erro ao buscar avaliações:', err);
+      }
+    };
+
+    fetchReviews();
+  }, []);
 
   return (
     <main className="min-h-screen pt-20 lg:pt-28">
@@ -88,15 +91,20 @@ const Avaliacoes = () => {
       {/* Botão para nova avaliação */}
       <section className="py-8 bg-secondary/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-center">
-                <Link to="/avaliacoes/deixar-avaliacao">
-                    <Button variant="primary" size="lg" className="group">
-                        <MessageCircle className="w-4 h-4 mr-2" />
-                        Deixar a Sua Avaliação
-                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                </Link>
-            </div>
+          <div className="flex justify-center">
+            <Link to="/avaliacoes/deixar-avaliacao">
+              <Button 
+                variant="primary" 
+                size="lg" 
+                className="group"
+                onClick={() => window.open('https://www.google.com/maps/place/?q=place_id:ChIJPe4TsTR7zpQRZbqirZgrlCM', '_blank')}
+              >
+                <MessageCircle className="w-4 h-4 mr-2" />
+                Deixar a Sua Avaliação
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -114,7 +122,7 @@ const Avaliacoes = () => {
               <div className="space-y-2 animate-fade-up" style={{ animationDelay: '150ms' }}>
                 <div className="flex items-center justify-center space-x-2">
                   <span className="text-3xl sm:text-4xl font-bold text-primary font-display">
-                    {stats.averageRating}
+                    {stats.averageRating.toFixed(1)}
                   </span>
                   <Star className="w-8 h-8 fill-primary text-primary" />
                 </div>
@@ -122,7 +130,7 @@ const Avaliacoes = () => {
               </div>
               <div className="space-y-2 animate-fade-up" style={{ animationDelay: '300ms' }}>
                 <div className="text-3xl sm:text-4xl font-bold text-primary font-display">
-                  {Math.round((stats.fiveStars / stats.totalReviews) * 100)}%
+                  {stats.totalReviews > 0 ? Math.round((stats.fiveStars / stats.totalReviews) * 100) : 0}%
                 </div>
                 <div className="text-muted-foreground">5 Estrelas</div>
               </div>
