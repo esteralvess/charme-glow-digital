@@ -14,7 +14,6 @@ const Avaliacoes = lazy(() => import("./pages/Avaliacoes"));
 const Inauguracao = lazy(() => import("./pages/Inauguracao"));
 const Contato = lazy(() => import("./pages/Contato"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-const DeixarAvaliacao = lazy(() => import("./pages/DeixarAvaliacao")); 
 const AtendimentoExpress = lazy(() => import("./pages/AtendimentoExpress"));
 
 const queryClient = new QueryClient();
@@ -39,7 +38,6 @@ const App = () => (
               <Route path="/" element={<Home />} />
               <Route path="/catalogo" element={<Catalogo />} />
               <Route path="/avaliacoes" element={<Avaliacoes />} />
-              <Route path="/avaliacoes/deixar-avaliacao" element={<DeixarAvaliacao />} /> {/* Adicionado: Nova rota */}
               <Route path="/inauguracao" element={<Inauguracao />} />
               <Route path="/contato" element={<Contato />} />
               <Route path="/atendimento-express" element={<AtendimentoExpress />} />

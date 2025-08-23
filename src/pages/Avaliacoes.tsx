@@ -92,7 +92,6 @@ const Avaliacoes = () => {
       <section className="py-8 bg-secondary/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center">
-            <Link to="/avaliacoes/deixar-avaliacao">
               <Button 
                 variant="primary" 
                 size="lg" 
@@ -103,7 +102,6 @@ const Avaliacoes = () => {
                 Deixar a Sua Avaliação
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
-            </Link>
           </div>
         </div>
       </section>
