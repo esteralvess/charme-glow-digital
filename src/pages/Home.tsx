@@ -89,6 +89,7 @@ const Home = () => {
                   <Phone className="w-4 h-4 mr-2 group-hover:animate-pulse" />
                   Agendar Agora
                 </Button>
+                {/*}
                 <Button 
                   variant="secondary" 
                   size="lg"
@@ -97,6 +98,7 @@ const Home = () => {
                   <Calendar className="w-4 h-4 mr-2" />
                   Ver Disponibilidade
                 </Button>
+                */}
               </div>
               <div className="flex items-center justify-center lg:justify-start space-x-6 text-sm text-muted-foreground mt-10">
                 <div className="flex items-center space-x-2">
