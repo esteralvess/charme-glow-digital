@@ -13,21 +13,21 @@ const Home = () => {
     {
       title: 'Pacote Clássico',
       description: 'O cuidado completo para o dia a dia. Mãos e pés com esmaltação tradicional para um look impecável.',
-      price: 'A consultar',
+      price: '49,90',
       image: PeMaoGel,
-      highlights: ['Mão e Pé Tradicional', 'Cuticulagem Perfeita', 'Hidratação Suave']
+      highlights: ['Mão e Pé Tradicional', 'Esfoliação', 'Hidratação Suave']
     },
     {
       title: 'Pacote Realce',
       description: 'A combinação perfeita para realçar sua beleza, unindo o cuidado das mãos e pés com um design de sobrancelha.',
-      price: 'A consultar',
+      price: '79,98',
       image: Sobrancelha,
       highlights: ['Mão e Pé Tradicional', 'Design de Sobrancelha', 'Harmonização do Olhar']
     },
     {
       title: 'Pacote Durabilidade',
       description: 'Praticidade e brilho duradouro. Mãos com a resistência do esmalte em gel e pés com o cuidado tradicional.',
-      price: 'A consultar',
+      price: '89,98',
       image: MaoGel,
       highlights: ['Mão com Esmalte em Gel', 'Pé Tradicional', 'Brilho por mais tempo']
     }

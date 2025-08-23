@@ -25,8 +25,8 @@ const allServices = [
     category: 'Sobrancelhas',
     name: 'Design de Sobrancelha',
     description: 'Modelagem profissional que harmoniza e valoriza o formato do seu rosto, realçando seu olhar.',
-    duration: '30 min',
-    price: 'A consultar',
+    duration: '20 min',
+    price: '29,98',
     popular: true,
     image: Sobrancelha
   },
@@ -34,8 +34,8 @@ const allServices = [
     category: 'Sobrancelhas',
     name: 'Sobrancelha de Henna',
     description: 'Aplicação de henna para preencher falhas e dar mais definição, com um resultado natural e marcante.',
-    duration: '45 min',
-    price: 'A consultar',
+    duration: '60 min',
+    price: '49,98',
     popular: false,
     image: Henna
   },
@@ -44,7 +44,7 @@ const allServices = [
     name: 'Micropigmentação',
     description: 'Técnica avançada para um design duradouro e sobrancelhas perfeitamente desenhadas fio a fio.',
     duration: '2 horas',
-    price: 'A consultar',
+    price: '448,90',
     popular: true,
     image: Micro
   },
@@ -53,7 +53,7 @@ const allServices = [
     name: 'Pé - Esmaltação Tradicional',
     description: 'Cuidado completo dos pés com cutilagem, hidratação e a cor de esmalte da sua preferência.',
     duration: '60 min',
-    price: 'A consultar',
+    price: '34,98',
     popular: false,
     image: Pe
   },
@@ -61,8 +61,8 @@ const allServices = [
     category: 'Mãos e Pés',
     name: 'Mão - Esmaltação Tradicional',
     description: 'Cuidado clássico das mãos, deixando suas unhas impecáveis com a esmaltação perfeita.',
-    duration: '45 min',
-    price: 'A consultar',
+    duration: '40 min',
+    price: '29,98',
     popular: true,
     image: Mao
   },
@@ -70,8 +70,8 @@ const allServices = [
     category: 'Mãos e Pés',
     name: 'Pé - Esmaltação em Gel',
     description: 'Unhas dos pés perfeitas por semanas, com brilho intenso e secagem imediata. Ideal para viagens.',
-    duration: '75 min',
-    price: 'A consultar',
+    duration: '60 min',
+    price: '59,98',
     popular: false,
     image: PeMaoGel
   },
@@ -80,52 +80,70 @@ const allServices = [
     name: 'Mão - Esmaltação em Gel',
     description: 'A durabilidade e o brilho do esmalte em gel para unhas das mãos impecáveis por mais tempo.',
     duration: '60 min',
-    price: 'A consultar',
+    price: '59,98',
     popular: true,
     image: MaoGel
   },
   {
     category: 'Mãos e Pés',
     name: 'SPA dos Pés',
-    description: 'Um ritual de relaxamento e cuidado profundo para renovar e hidratar seus pés.',
-    duration: '90 min',
-    price: 'A consultar',
+    description: 'Um ritual de relaxamento e cuidado profundo para renovar e hidratar seus pés. Tratamento de rachaduras',
+    duration: '1h 30 min',
+    price: '79,90',
     popular: false,
     image: SPA
   },
   {
     category: 'Tratamentos de Unhas',
     name: 'Tratamento de Unha',
-    description: 'Protocolo focado em fortalecer, nutrir e recuperar a saúde de unhas fracas e quebradiças.',
-    duration: '30 min',
-    price: 'A consultar',
+    description: 'Tratamento de unhas contaminadas, com fungos ou micoses, promovendo a saúde e a recuperação das unhas.',
+    duration: '60 min | sessão',
+    price: '49,90 | sessão',
+    popular: false,
+    image: Tratamento
+  },
+  {
+    category: 'Outros Serviços',
+    name: 'Tratamento de Olho de Peixe',
+    description: 'Tratamento especializado para remoção de calos e pele ressecada nos pés. Utilizando técnicas de cauterização com jato de plasma.',
+    duration: '30 min | sessão',
+    price: '59,90 | sessão',
     popular: false,
     image: Tratamento
   },
   {
     category: 'Tratamentos de Unhas',
     name: 'Cuticulagem',
-    description: 'Serviço de remoção e hidratação precisa das cutículas para um acabamento limpo e profissional.',
-    duration: '20 min',
-    price: 'A consultar',
+    description: 'Serviço de remoção e hidratação precisa das cutículas para um acabamento limpo e profissional. Esmaltacao opcional com base.',
+    duration: '30 min',
+    price: '24,98',
     popular: false,
     image: Cuticulagem
   },
   {
     category: 'Tratamentos de Unhas',
-    name: 'Blindagem de Gel',
+    name: 'Banho de Gel',
     description: 'Camada protetora de gel que aumenta a resistência da unha natural, evitando quebras.',
     duration: '60 min',
-    price: 'A consultar',
+    price: '59,90',
+    popular: false,
+    image: PeMao
+  },
+  {
+    category: 'Tratamentos de Unhas',
+    name: 'Blindagem de Unha',
+    description: 'Feitas com gel base, deixando as unhas flexíveis, evitando quebras e dando duração ao esmalte comum.',
+    duration: '60 min',
+    price: '59,90',
     popular: false,
     image: PeMao
   },
   {
     category: 'Tratamentos de Unhas',
     name: 'Restauração de Unha',
-    description: 'Recuperação de unhas danificadas ou roídas com técnicas de reconstrução.',
-    duration: '45 min',
-    price: 'A consultar',
+    description: 'Recuperação de unhas danificadas com técnicas de reconstrução. Ideal para quando quebra ou lasca alguma unha específica.',
+    duration: '20 min',
+    price: '9,90 por unha',
     popular: false,
     image: Restauracao
   },
@@ -133,8 +151,8 @@ const allServices = [
     category: 'Tratamentos de Unhas',
     name: 'Alongamento de Unha',
     description: 'Aumente o comprimento das suas unhas com naturalidade e resistência. Várias técnicas disponíveis.',
-    duration: '2.5 horas',
-    price: 'A consultar',
+    duration: '3 horas',
+    price: '159,90',
     popular: false,
     image: Alogamento
   },
@@ -252,7 +270,7 @@ const Catalogo = () => {
                       <span>{service.duration}</span>
                     </div>
                     <div className="font-semibold text-primary text-lg">
-                      A consultar
+                     <span>{service.price}</span>
                     </div>
                   </div>
                   

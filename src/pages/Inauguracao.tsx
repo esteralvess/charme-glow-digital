@@ -43,18 +43,30 @@ const Inauguracao = () => {
   });
 
   // 2. Função que será executada ao enviar o formulário
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    // Simula o envio de dados para o console
-    console.log('RSVP recebido:', values);
+    const onSubmit = async (values) => {
+      try {
+        const resp = await fetch("https://webhooks.gerenc.com/webhook/rsvp-inauguracao", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(values),
+        });
 
-    setIsSubmitted(true);
-    
-    // Exibe um toast de sucesso com as instruções do cupom
-    toast.success('RSVP Recebido!', {
-      description: `Obrigada por confirmar, ${values.name}! Enviamos seu cupom de 10% de desconto para o seu e-mail e WhatsApp.`,
-      icon: <Gift className="h-4 w-4" />,
-    });
-  };
+        if (resp.ok) {
+          setIsSubmitted(true);
+          toast.success("RSVP Recebido!", {
+            description: `Obrigada por confirmar, ${values.name}! Seu cupom foi enviado por e-mail e WhatsApp.`,
+            icon: <Gift className="h-4 w-4" />,
+          });
+        } else {
+          toast.error("Erro ao enviar confirmação.");
+        }
+      } catch {
+        toast.error("Erro inesperado.");
+      }
+    };
+
 
   return (
     <main className="min-h-screen pt-20 lg:pt-28">
