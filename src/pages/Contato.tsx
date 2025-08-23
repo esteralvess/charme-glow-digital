@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, MapPin, Clock, Instagram, Facebook, Mail, MessageCircle } from 'lucide-react';
+import { Phone, MapPin, Clock, Instagram, /* Facebook, Mail, */ MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button-premium';
 import { Card } from '@/components/ui/card';
 
@@ -13,7 +13,7 @@ const Contato = () => {
       primary: true,
       onClick: () => {
         const message = encodeURIComponent('Olá! Gostaria de mais informações sobre os serviços do Cheias de Charme Studio.');
-        const whatsappUrl = `https://wa.me/5511999999999?text=${message}&utm_source=website&utm_medium=contato&utm_campaign=whatsapp_direto`;
+        const whatsappUrl = `https://wa.me/5511958525413?text=${message}&utm_source=website&utm_medium=contato&utm_campaign=whatsapp_direto`;
         window.open(whatsappUrl, '_blank');
       }
     },
@@ -24,29 +24,29 @@ const Contato = () => {
       action: 'Seguir',
       primary: true,
       onClick: () => {
-        window.open('https://instagram.com/cheiasdecharmestudio.unhas', '_blank');
+        window.open('https://www.instagram.com/cheiasdecharme.unhas', '_blank');
       }
     },
-    {
-      icon: Facebook,
-      title: 'Facebook',
-      description: 'Conecte-se conosco na rede social',
-      action: 'Visitar Página',
-      primary: false,
-      onClick: () => {
-        window.open('https://facebook.com/cheiasdecharmestudio', '_blank');
-      }
-    },
-    {
-      icon: Mail,
-      title: 'E-mail',
-      description: 'Para consultas e informações detalhadas',
-      action: 'Enviar E-mail',
-      primary: false,
-      onClick: () => {
-        window.location.href = 'mailto:contato@cheiasdecharmestudio.com.br?subject=Contato pelo Site';
-      }
-    }
+    // {
+    //   icon: Facebook,
+    //   title: 'Facebook',
+    //   description: 'Conecte-se conosco na rede social',
+    //   action: 'Visitar Página',
+    //   primary: false,
+    //   onClick: () => {
+    //     window.open('https://facebook.com/cheiasdecharmestudio', '_blank');
+    //   }
+    // },
+    // {
+    //   icon: Mail,
+    //   title: 'E-mail',
+    //   description: 'Para consultas e informações detalhadas',
+    //   action: 'Enviar E-mail',
+    //   primary: false,
+    //   onClick: () => {
+    //     window.location.href = 'mailto:contato@cheiasdecharmestudio.com.br?subject=Contato pelo Site';
+    //   }
+    // }
   ];
 
   const businessInfo = {
@@ -56,9 +56,9 @@ const Contato = () => {
       { day: 'Domingo', time: 'Fechado' }
     ],
     location: {
-      address: 'Suzano - SP',
+      address: 'Praça João Pessoa, 59 - Centro, Suzano - SP, sala 8',
       neighborhood: 'Centro',
-      reference: 'Próximo ao Shopping'
+      reference: 'Próximo a Praça da Igreja e a Estação de Suzano'
     }
   };
 
@@ -93,14 +93,14 @@ const Contato = () => {
       {/* Contact Methods */}
       <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 justify-items-center">
             {contactMethods.map((method, index) => {
               const IconComponent = method.icon;
               return (
                 <Card 
                   key={method.title}
                   className="card-premium p-6 text-center space-y-4 group hover:scale-105 transition-all duration-300 animate-fade-up"
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  style={{ animationDelay: `${index * 100}ms`, width: '100%', maxWidth: '280px' }}
                 >
                   <div className="flex justify-center">
                     <div className={`p-4 rounded-full ${method.primary ? 'bg-primary text-primary-foreground' : 'bg-accent text-accent-foreground'} group-hover:scale-110 transition-transform duration-300`}>
@@ -187,7 +187,7 @@ const Contato = () => {
                 <Button 
                   variant="secondary" 
                   onClick={() => {
-                    window.open('https://maps.google.com/?q=Suzano,SP', '_blank');
+                    window.open('https://www.google.com/maps/place/Cheias+de+Charme/@-23.5353228,-46.3088095,17z/data=!3m1!4b1!4m6!3m5!1s0x94ce7b34b113ee3d:0x23942b98ada2ba65!8m2!3d-23.5353228!4d-46.3088095!16s%2Fg%2F11xkyts5g1?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D', '_blank');
                   }}
                   className="w-full"
                 >
@@ -259,7 +259,7 @@ const Contato = () => {
               size="lg"
               onClick={() => {
                 const message = encodeURIComponent('Olá! Tenho algumas dúvidas sobre os serviços. Podem me ajudar?');
-                const whatsappUrl = `https://wa.me/5511999999999?text=${message}&utm_source=website&utm_medium=contato&utm_campaign=duvidas`;
+                const whatsappUrl = `https://wa.me/5511958525413?text=${message}&utm_source=website&utm_medium=contato&utm_campaign=duvidas`;
                 window.open(whatsappUrl, '_blank');
               }}
               className="group"

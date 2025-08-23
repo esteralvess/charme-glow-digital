@@ -6,7 +6,7 @@ import { Card } from '@/components/ui/card';
 import Sobrancelha from '@/assets/sobrancelha.png';
 import PeMaoGel from '@/assets/pe-mao-gel.png';
 import MaoGel from '@/assets/gel.png';
-import MaoFundo from '@/assets/mao-fundo-2.png'; // Sua nova imagem com fundo
+import MaoFundo from '@/assets/mao-fundo-2.png';
 
 const Home = () => {
   const services = [
@@ -33,26 +33,17 @@ const Home = () => {
     }
   ];
 
-  const testimonials = [
-    {
-      name: 'Ana Carolina',
-      text: 'Simplesmente perfeito! O atendimento é impecável e o resultado sempre supera minhas expectativas.',
-      rating: 5,
-      service: 'Manicure Premium'
-    },
-    {
-      name: 'Mariana Silva',
-      text: 'Profissionalismo e qualidade incomparáveis. Já sou cliente há mais de um ano e sempre saio satisfeita.',
-      rating: 5,
-      service: 'Estética Facial'
-    },
-    {
-      name: 'Fernanda Costa',
-      text: 'O ambiente é acolhedor e relaxante. Cada detalhe é pensado para proporcionar uma experiência única.',
-      rating: 5,
-      service: 'Cuidados Especiais'
-    }
-  ];
+  const [googleReviews, setGoogleReviews] = React.useState<any[]>([]);
+
+  React.useEffect(() => {
+    // Substitua pela sua API ou webhook que retorna reviews do Google
+    fetch('https://webhooks.gerenc.com/webhook/google-reviews')
+      .then(res => res.json())
+      .then(data => {
+        setGoogleReviews(data.reviews?.slice(0, 3) || []);
+      })
+      .catch(err => console.error('Erro ao buscar avaliações do Google:', err));
+  }, []);
 
   const handleWhatsAppClick = (utmCampaign: string) => {
     let message = 'Olá! Gostaria de agendar um horário no Cheias de Charme Studio.';
@@ -73,18 +64,13 @@ const Home = () => {
       <section className="relative min-h-screen flex items-center bg-secondary/30 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            
-            {/* Coluna da Esquerda: Textos e Botões */}
-            <div className="text-center lg:text-left animate-fade-up pt-16 lg:pt-0">
+            <div className="text-center lg:text-left animate-fade-up pt-16 lg:pt-0 mt-10">
               <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
                 Unhas que encantam, charme que marca.
               </h1>
-
               <p className="text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed mt-8">
                 No Studio Cheias de Charme, cada detalhe é cuidadosamente pensado para valorizar sua beleza única. Manicure e estética premium em Suzano-SP.
               </p>
-
-              {/* Imagem no Mobile (abaixo do texto) */}
               <div className="lg:hidden mt-8 flex justify-center">
                 <img
                   src={MaoFundo}
@@ -93,7 +79,6 @@ const Home = () => {
                   loading="eager"
                 />
               </div>
-
               <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Button
                   variant="primary"
@@ -130,8 +115,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-
-        {/* Coluna da Direita: Imagem no Desktop */}
         <div className="hidden lg:flex absolute top-0 right-0 h-full w-full lg:w-1/2 z-0 items-end justify-center">
           <img
             src={MaoFundo}
@@ -142,7 +125,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Services Section (O resto do código permanece o mesmo) */}
+      {/* Services Section */}
       <section className="py-20 lg:py-32 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16 animate-fade-up">
@@ -214,49 +197,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Atendimento Express Section */}
-      <section className="py-20 lg:py-32 bg-secondary/10">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative max-w-4xl mx-auto text-center animate-fade-up p-8 lg:p-16">
-            <div className="absolute inset-0 bg-primary rounded-[2rem] -z-10"></div>
-            <div className="relative z-10">
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-foreground">
-                Precisa de Atendimento Imediato?
-              </h2>
-              <p className="text-lg text-primary-foreground/90 max-w-2xl mx-auto leading-relaxed mt-8">
-                Aqui no <span className="font-semibold text-white">Studio Cheias de Charme</span>, 
-                sempre temos horários disponíveis para você.  
-                E se surgir uma necessidade de última hora, oferecemos o 
-                <span className="font-semibold text-white"> Atendimento Express</span>: um encaixe imediato com taxa adicional, 
-                para garantir que sua beleza não espere.
-              </p>
-              <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/atendimento-express">
-                  <Button 
-                    variant="secondary" 
-                    size="lg" 
-                    className="group bg-white text-primary hover:bg-white/10 w-full"
-                  >              
-                    <Sparkles className="w-5 h-5 mr-4" />
-                    Saiba Mais
-                  </Button>
-                </Link>
-                <Button 
-                  variant="secondary" 
-                  size="lg" 
-                  className="group bg-transparent border-white text-white hover:bg-white/20"
-                  onClick={() => handleWhatsAppClick('agendar_encaixe')}
-                >              
-                  <Calendar className="w-5 h-5 mr-2" />
-                  Agendar Encaixe
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    {/* Testimonials Section */}
+      {/* Testimonials Section 
       <section className="py-20 lg:py-32 bg-secondary/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16 animate-fade-up">
@@ -268,26 +209,26 @@ const Home = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
+            {googleReviews.map((review, index) => (
               <Card 
-                key={testimonial.name}
+                key={review.id || index}
                 className="card-premium p-6 space-y-4 animate-fade-up rounded-[3rem]"
                 style={{ animationDelay: `${index * 150}ms` }}
               >
                 <div className="flex items-center space-x-1">
-                  {[...Array(testimonial.rating)].map((_, i) => (
+                  {[...Array(review.rating)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-primary text-primary" />
                   ))}
                 </div>
                 <blockquote className="text-foreground italic leading-relaxed">
-                  "{testimonial.text}"
+                  "{review.comment || review.text}"
                 </blockquote>
                 <div className="space-y-1">
                   <div className="font-semibold text-foreground">
-                    {testimonial.name}
+                    {review.author_name || review.name}
                   </div>
                   <div className="text-sm text-muted-foreground">
-                    {testimonial.service}
+                    {review.service || 'Serviço Avaliado'}
                   </div>
                 </div>
               </Card>
@@ -300,45 +241,20 @@ const Home = () => {
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-            <Link to="/avaliacoes/deixar-avaliacao">
-              <Button variant="primary" size="lg" className="grou w-full">
-                <MessageCircle className="w-4 h-4 mr-2" />
-                Deixar a Sua Avaliação
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
+            <Button 
+              variant="primary" 
+              size="lg" 
+              className="group w-full"
+              onClick={() => window.open('https://g.page/SEU_LINK_GOOGLE_REVIEW', '_blank')}
+            >
+              <MessageCircle className="w-4 h-4 mr-2" />
+              Deixar a Sua Avaliação
+              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
           </div>
         </div>
       </section>
-
-    {/* Launch Cocktail Section */}
-      <section className="py-20 lg:py-32 bg-primary">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center space-y-8 animate-fade-up">
-            <div className="space-y-4">
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-foreground">
-                Você é nossa convidada especial.
-              </h2>
-              <p className="text-lg text-primary-foreground/90 leading-relaxed">
-                Participe do nosso coquetel de lançamento e celebre conosco.
-              </p>
-            </div>
-            <div className="pt-4">
-              <Link to="/lancamento">
-                <Button 
-                  variant="secondary" 
-                  size="xl" 
-                  className="group bg-primary-foreground/20 border-primary-foreground text-primary-foreground hover:bg-primary-foreground/30"
-                >
-                  <Sparkles className="w-5 h-5 mr-3" />
-                  Confirmar Presença
-                  <ArrowRight className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      */}
 
       {/* CTA Section */}
       <section className="py-20 lg:py-32 bg-gradient-card">

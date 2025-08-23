@@ -20,7 +20,7 @@ const Avaliacoes = () => {
     const message = encodeURIComponent(
       'Olá! Vi as avaliações no site e gostaria de agendar um horário.'
     );
-    const whatsappUrl = `https://wa.me/5511999999999?text=${message}&utm_source=website&utm_medium=avaliacoes&utm_campaign=agendamento`;
+    const whatsappUrl = `https://wa.me/5511958525413?text=${message}&utm_source=website&utm_medium=avaliacoes&utm_campaign=agendamento`;
     window.open(whatsappUrl, '_blank');
   };
 

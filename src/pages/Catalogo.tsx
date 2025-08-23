@@ -173,7 +173,7 @@ const Catalogo = () => {
 
   const handleWhatsAppClick = (serviceName: string) => {
     const message = encodeURIComponent(`Olá! Gostaria de agendar o serviço: ${serviceName}`);
-    const whatsappUrl = `https://wa.me/5511999999999?text=${message}&utm_source=website&utm_medium=catalogo&utm_campaign=${serviceName.toLowerCase().replace(/\s+/g, '_')}`;
+    const whatsappUrl = `https://wa.me/5511958525413?text=${message}&utm_source=website&utm_medium=catalogo&utm_campaign=${serviceName.toLowerCase().replace(/\s+/g, '_')}`;
     window.open(whatsappUrl, '_blank');
   };
 

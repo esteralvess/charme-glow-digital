@@ -82,8 +82,7 @@ const Inauguracao = () => {
               Grande Inauguração
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Participe do nosso coquetel de inauguração e descubra um novo 
-              conceito de beleza premium em Suzano-SP.
+              Participe do nosso coquetel de inauguração e conheça nosso espaço em Suzano-SP.
             </p>
           </div>
         </div>
@@ -100,7 +99,7 @@ const Inauguracao = () => {
                   <CheckCircle className="w-12 h-12 mx-auto text-primary" />
                   <h3 className="font-display text-xl font-semibold">Obrigada por confirmar!</h3>
                   <p className="text-muted-foreground">
-                    Seu cupom de 10% de desconto foi enviado para o seu e-mail e WhatsApp. 
+                    Seu cupom de 10% de desconto foi enviado juntamente com as informações do evento para o seu e-mail e WhatsApp. 
                     Esperamos por você em nossa inauguração!
                   </p>
                 </div>
@@ -113,7 +112,7 @@ const Inauguracao = () => {
                     </h2>
                     <p className="text-muted-foreground leading-relaxed">
                       Garanta seu lugar no nosso evento e receba um cupom de 
-                      <strong>10% de desconto</strong> para seu primeiro serviço.
+                      <strong> 10% de desconto</strong> para seu primeiro serviço.
                     </p>
                   </div>
                   <Form {...form}>
@@ -189,17 +188,17 @@ const Inauguracao = () => {
               <div className="space-y-2">
                 <Sparkles className="w-8 h-8 text-primary mx-auto" />
                 <h3 className="font-semibold text-foreground">Data</h3>
-                <p className="text-sm text-muted-foreground">Sexta-feira, 31 de Agosto</p>
+                <p className="text-sm text-muted-foreground">Sábado, 30 de Agosto</p>
               </div>
               <div className="space-y-2">
                 <Sparkles className="w-8 h-8 text-primary mx-auto" />
                 <h3 className="font-semibold text-foreground">Horário</h3>
-                <p className="text-sm text-muted-foreground">A partir das 19h</p>
+                <p className="text-sm text-muted-foreground">A partir das 16h</p>
               </div>
               <div className="space-y-2">
                 <Sparkles className="w-8 h-8 text-primary mx-auto" />
                 <h3 className="font-semibold text-foreground">Local</h3>
-                <p className="text-sm text-muted-foreground">Suzano - SP, Centro</p>
+                <p className="text-sm text-muted-foreground">Praça João Pessoa, 59 - Centro, Suzano - SP, sala 8</p>
               </div>
             </div>
           </div>

@@ -22,7 +22,7 @@ const Header = () => {
 
   const handleWhatsAppClick = () => {
     const message = encodeURIComponent('Olá! Gostaria de agendar um horário no Cheias de Charme Studio.');
-    const whatsappUrl = `https://wa.me/5511999999999?text=${message}&utm_source=website&utm_medium=header&utm_campaign=agendamento`;
+    const whatsappUrl = `https://wa.me/5511958525413?text=${message}&utm_source=website&utm_medium=header&utm_campaign=agendamento`;
     window.open(whatsappUrl, '_blank');
   };
 

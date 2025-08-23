@@ -25,7 +25,7 @@ const AtendimentoExpress = () => {
     const message = encodeURIComponent(
       `Olá! Gostaria de agendar um Atendimento Express para o serviço de ${servicoSelecionado.nome}.`
     );
-    const whatsappUrl = `https://wa.me/5511999999999?text=${message}&utm_source=website&utm_medium=cta&utm_campaign=agendamento_express`;
+    const whatsappUrl = `https://wa.me/5511958525413?text=${message}&utm_source=website&utm_medium=cta&utm_campaign=agendamento_express`;
     window.open(whatsappUrl, '_blank');
   };
 

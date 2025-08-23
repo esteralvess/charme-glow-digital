@@ -8,17 +8,17 @@ import logo from '@/assets/logo.png';
 const Footer = () => {
   const handleWhatsAppClick = () => {
     const message = encodeURIComponent('Olá! Gostaria de mais informações sobre os serviços do Cheias de Charme Studio.');
-    const whatsappUrl = `https://wa.me/5511999999999?text=${message}&utm_source=website&utm_medium=footer&utm_campaign=contato`;
+    const whatsappUrl = `https://wa.me/5511958525413?text=${message}&utm_source=website&utm_medium=footer&utm_campaign=contato`;
     window.open(whatsappUrl, '_blank');
   };
 
   const handleInstagramClick = () => {
-    window.open('https://instagram.com/cheiasdecharmestudio', '_blank');
+    window.open('https://www.instagram.com/cheiasdecharme.unhas', '_blank');
   };
 
-  const handleFacebookClick = () => {
+  {/* const handleFacebookClick = () => {
     window.open('https://facebook.com/cheiasdecharmestudio', '_blank');
-  };
+  };*/}
 
   return (
     <footer className="bg-secondary/30 border-t border-border/60">
@@ -69,7 +69,7 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
                 <span className="text-muted-foreground text-sm">
-                  Suzano - SP
+                  Praça João Pessoa, 59 - Centro, Suzano - SP, sala 8
                 </span>
               </div>
               <div className="flex items-center space-x-3">
@@ -101,13 +101,13 @@ const Footer = () => {
               >
                 <Instagram className="w-5 h-5" />
               </button>
-              <button
+              {/* <button
                 onClick={handleFacebookClick}
                 className="p-2 bg-accent hover:bg-primary hover:text-primary-foreground transition-colors rounded-lg"
                 aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5" />
-              </button>
+              </button>*/}
             </div>
             <Button 
               variant="primary" 
