@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Star, Clock, Search } from 'lucide-react';
+import { Phone, Star, Clock, Search, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button-premium';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -19,7 +19,7 @@ import Alogamento from '@/assets/alongamento.png';
 import Restauracao from '@/assets/restauracao.png';
 import Cera from '@/assets/cera.png';
 
-// --- TODOS OS SERVIÇOS COM SUAS IMAGENS ---
+// --- TODOS OS SERVIÇOS COM PREÇOS ATUALIZADOS ---
 const allServices = [
   {
     category: 'Sobrancelhas',
@@ -28,7 +28,8 @@ const allServices = [
     duration: '20 min',
     price: '29,98',
     popular: true,
-    image: Sobrancelha
+    image: Sobrancelha,
+    unidade: 'Ambas'
   },
   {
     category: 'Sobrancelhas',
@@ -37,7 +38,8 @@ const allServices = [
     duration: '60 min',
     price: '49,98',
     popular: false,
-    image: Henna
+    image: Henna,
+    unidade: 'Ambas'
   },
   {
     category: 'Sobrancelhas',
@@ -46,7 +48,8 @@ const allServices = [
     duration: '2 horas',
     price: '448,90',
     popular: true,
-    image: Micro
+    image: Micro,
+    unidade: 'Miguel Badra'
   },
   {
     category: 'Mãos e Pés',
@@ -55,7 +58,8 @@ const allServices = [
     duration: '60 min',
     price: '34,98',
     popular: false,
-    image: Pe
+    image: Pe,
+    unidade: 'Ambas'
   },
   {
     category: 'Mãos e Pés',
@@ -64,7 +68,8 @@ const allServices = [
     duration: '40 min',
     price: '29,98',
     popular: true,
-    image: Mao
+    image: Mao,
+    unidade: 'Ambas'
   },
   {
     category: 'Mãos e Pés',
@@ -73,7 +78,8 @@ const allServices = [
     duration: '60 min',
     price: '59,98',
     popular: false,
-    image: PeMaoGel
+    image: PeMaoGel,
+    unidade: 'Ambas'
   },
   {
     category: 'Mãos e Pés',
@@ -82,7 +88,8 @@ const allServices = [
     duration: '60 min',
     price: '59,98',
     popular: true,
-    image: MaoGel
+    image: MaoGel,
+    unidade: 'Ambas'
   },
   {
     category: 'Mãos e Pés',
@@ -91,7 +98,8 @@ const allServices = [
     duration: '1h 30 min',
     price: '79,90',
     popular: false,
-    image: SPA
+    image: SPA,
+    unidade: 'Ambas'
   },
   {
     category: 'Tratamentos de Unhas',
@@ -100,7 +108,8 @@ const allServices = [
     duration: '60 min | sessão',
     price: '49,90 | sessão',
     popular: false,
-    image: Tratamento
+    image: Tratamento,
+    unidade: 'Ambas'
   },
   {
     category: 'Outros Serviços',
@@ -109,7 +118,8 @@ const allServices = [
     duration: '30 min | sessão',
     price: '59,90 | sessão',
     popular: false,
-    image: Tratamento
+    image: Tratamento,
+    unidade: 'Ambas'
   },
   {
     category: 'Tratamentos de Unhas',
@@ -118,7 +128,8 @@ const allServices = [
     duration: '30 min',
     price: '24,98',
     popular: false,
-    image: Cuticulagem
+    image: Cuticulagem,
+    unidade: 'Ambas'
   },
   {
     category: 'Tratamentos de Unhas',
@@ -127,7 +138,8 @@ const allServices = [
     duration: '60 min',
     price: '59,90',
     popular: false,
-    image: PeMao
+    image: PeMao,
+    unidade: 'Ambas'
   },
   {
     category: 'Tratamentos de Unhas',
@@ -136,7 +148,8 @@ const allServices = [
     duration: '60 min',
     price: '59,90',
     popular: false,
-    image: PeMao
+    image: PeMao,
+    unidade: 'Ambas'
   },
   {
     category: 'Tratamentos de Unhas',
@@ -145,7 +158,8 @@ const allServices = [
     duration: '20 min',
     price: '9,90 por unha',
     popular: false,
-    image: Restauracao
+    image: Restauracao,
+    unidade: 'Ambas'
   },
   {
     category: 'Tratamentos de Unhas',
@@ -154,22 +168,166 @@ const allServices = [
     duration: '3 horas',
     price: '159,90',
     popular: false,
-    image: Alogamento
+    image: Alogamento,
+    unidade: 'Ambas'
   },
   {
-    category: 'Outros Serviços',
-    name: 'Depilação com Cera',
-    description: 'Remoção de pelos com cera de alta qualidade, garantindo uma pele lisa e macia. (Consultar áreas)',
-    duration: 'Varia',
-    price: 'A consultar',
+    category: 'Depilação Facial',
+    name: 'Rosto Completo (cera)',
+    description: 'Depilação facial com cera de alta qualidade para uma pele lisa e macia.',
+    duration: '30 min',
+    price: '34,99',
     popular: false,
-    image: Cera
+    image: Cera,
+    unidade: 'Miguel Badra'
+  },
+  {
+    category: 'Depilação Facial',
+    name: 'Buço (cera)',
+    description: 'Remoção de pelos da região do buço com cera de alta qualidade.',
+    duration: '20 min',
+    price: '14,99',
+    popular: false,
+    image: Cera,
+    unidade: 'Miguel Badra'
+  },
+  {
+    category: 'Depilação Facial',
+    name: 'Sobrancelha (cera)',
+    description: 'Modelagem da sobrancelha utilizando a técnica de depilação com cera.',
+    duration: '30 min',
+    price: '24,99',
+    popular: false,
+    image: Cera,
+    unidade: 'Miguel Badra'
+  },
+  {
+    category: 'Depilação Facial',
+    name: 'Queixo (cera)',
+    description: 'Remoção de pelos da região do queixo com cera de alta qualidade.',
+    duration: '20 min',
+    price: '14,99',
+    popular: false,
+    image: Cera,
+    unidade: 'Miguel Badra'
+  },
+  {
+    category: 'Depilação Corporal',
+    name: 'Axila (cera)',
+    description: 'Depilação corporal com cera de alta qualidade para uma pele lisa e macia.',
+    duration: '20 min',
+    price: '19,98',
+    popular: true,
+    image: Cera,
+    unidade: 'Miguel Badra'
+  },
+  {
+    category: 'Depilação Corporal',
+    name: 'Linha da Barriga (cera)',
+    description: 'Depilação corporal com cera de alta qualidade para uma pele lisa e macia.',
+    duration: '20 min',
+    price: '19,98',
+    popular: false,
+    image: Cera,
+    unidade: 'Miguel Badra'
+  },
+  {
+    category: 'Depilação Corporal',
+    name: 'Barriga Completa (cera)',
+    description: 'Depilação corporal com cera de alta qualidade para uma pele lisa e macia.',
+    duration: '40 min',
+    price: '39,99',
+    popular: false,
+    image: Cera,
+    unidade: 'Miguel Badra'
+  },
+  {
+    category: 'Depilação Corporal',
+    name: 'Glúteo (cera)',
+    description: 'Depilação corporal com cera de alta qualidade para uma pele lisa e macia.',
+    duration: '40 min',
+    price: '39,99',
+    popular: false,
+    image: Cera,
+    unidade: 'Miguel Badra'
+  },
+  {
+    category: 'Depilação Corporal',
+    name: 'Virilha Completa + Perianal (cera)',
+    description: 'Depilação corporal com cera de alta qualidade para uma pele lisa e macia.',
+    duration: '1 hora',
+    price: '59,99',
+    popular: true,
+    image: Cera,
+    unidade: 'Miguel Badra'
+  },
+  {
+    category: 'Depilação Corporal',
+    name: 'Virilha Simples + Perianal (cera)',
+    description: 'Depilação corporal com cera de alta qualidade para uma pele lisa e macia.',
+    duration: '30 min',
+    price: '39,99',
+    popular: false,
+    image: Cera,
+    unidade: 'Miguel Badra'
+  },
+  {
+    category: 'Depilação Corporal',
+    name: 'Perna Completa (cera)',
+    description: 'Depilação corporal com cera de alta qualidade para uma pele lisa e macia.',
+    duration: '40 min',
+    price: '59,99',
+    popular: false,
+    image: Cera,
+    unidade: 'Miguel Badra'
+  },
+  {
+    category: 'Depilação Corporal',
+    name: 'Meia Perna (cera)',
+    description: 'Depilação corporal com cera de alta qualidade para uma pele lisa e macia.',
+    duration: '30 min',
+    price: '34,99',
+    popular: false,
+    image: Cera,
+    unidade: 'Miguel Badra'
+  },
+  {
+    category: 'Massagem',
+    name: 'Reflexologia Podal',
+    description: 'Técnica de massagem que estimula pontos reflexos nos pés, promovendo relaxamento e bem-estar.',
+    duration: '2 horas',
+    price: '79,90',
+    popular: false,
+    image: Cera,
+    unidade: 'Ambas'
+  },
+  {
+    category: 'Massagem',
+    name: 'Massagem Corporal',
+    description: 'Técnica de massagem que promove o relaxamento muscular e alívio do estresse.',
+    duration: '2 horas',
+    price: '134,90',
+    popular: false,
+    image: Cera,
+    unidade: 'Miguel Badra'
+  },
+  {
+    category: 'Massagem',
+    name: 'Massagem Pés',
+    description: 'Técnica de massagem que promove o relaxamento muscular e alívio do estresse.',
+    duration: '2 horas',
+    price: '59,90',
+    popular: false,
+    image: Cera,
+    unidade: 'Ambas'
   },
 ];
+
 
 const Catalogo = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Todos');
+  const [selectedUnidade, setSelectedUnidade] = useState('Todas');
 
   const handleWhatsAppClick = (serviceName: string) => {
     const message = encodeURIComponent(`Olá! Gostaria de agendar o serviço: ${serviceName}`);
@@ -179,10 +337,24 @@ const Catalogo = () => {
 
   const categories = ['Todos', ...new Set(allServices.map(service => service.category))];
 
+  // --- LÓGICA DE FILTRO AJUSTADA PARA MAIOR CLAREZA ---
   const filteredServices = allServices.filter(service => {
+    // Filtro por Unidade
+    const matchesUnidade = () => {
+      // Se "Todas as Unidades" estiver selecionado, o serviço SEMPRE deve aparecer.
+      if (selectedUnidade === 'Todas') {
+        return true;
+      }
+      // Caso contrário, mostra apenas se o serviço for de "Ambas" ou da unidade específica.
+      return service.unidade === 'Ambas' || service.unidade === selectedUnidade;
+    };
+
+    // Outros filtros
     const matchesCategory = selectedCategory === 'Todos' || service.category === selectedCategory;
     const matchesSearch = service.name.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesCategory && matchesSearch;
+
+    // Retorna true apenas se passar em todos os filtros
+    return matchesCategory && matchesSearch && matchesUnidade();
   });
 
   return (
@@ -205,8 +377,8 @@ const Catalogo = () => {
       {/* Filtros e Pesquisa */}
       <section className="py-6 sticky top-16 lg:top-20 bg-background/80 backdrop-blur-md z-40 border-b">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row gap-4 items-center">
-            <div className="relative w-full sm:w-2/3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+            <div className="relative md:col-span-1">
               <Input 
                 type="text"
                 placeholder="Pesquisar por um serviço..."
@@ -216,7 +388,21 @@ const Catalogo = () => {
               />
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             </div>
-            <div className="w-full sm:w-1/3">
+            
+            <div className="md:col-span-1">
+              <Select onValueChange={setSelectedUnidade} defaultValue="Todas">
+                <SelectTrigger className="w-full h-12">
+                  <SelectValue placeholder="Filtrar por unidade" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Todas">Todas as Unidades</SelectItem>
+                  <SelectItem value="Centro">Unidade Centro</SelectItem> 
+                  <SelectItem value="Miguel Badra">Unidade Miguel Badra</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            
+            <div className="md:col-span-1">
               <Select onValueChange={setSelectedCategory} defaultValue="Todos">
                 <SelectTrigger className="w-full h-12">
                   <SelectValue placeholder="Filtrar por categoria" />
@@ -256,6 +442,16 @@ const Catalogo = () => {
                 
                 <div className="p-6 flex flex-col flex-grow space-y-4">
                   <div className="space-y-2 flex-grow">
+                    
+                    {service.unidade !== 'Ambas' && (
+                      <div className="flex items-center space-x-1.5 mb-2">
+                        <MapPin className="w-4 h-4 text-blue-600" />
+                        <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">
+                          Exclusivo Unidade {service.unidade}
+                        </span>
+                      </div>
+                    )}
+
                     <h3 className="font-display text-xl font-semibold text-foreground">
                       {service.name}
                     </h3>
@@ -270,7 +466,7 @@ const Catalogo = () => {
                       <span>{service.duration}</span>
                     </div>
                     <div className="font-semibold text-primary text-lg">
-                     <span>{service.price}</span>
+                     <span>R$ {service.price}</span>
                     </div>
                   </div>
                   
