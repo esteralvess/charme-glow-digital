@@ -56,7 +56,7 @@ const allServices = [
     name: 'Pé - Esmaltação Tradicional',
     description: 'Cuidado completo dos pés com cutilagem, hidratação e a cor de esmalte da sua preferência.',
     duration: '60 min',
-    price: '34,98',
+    price: '44,99',
     popular: false,
     image: Pe,
     unidade: 'Ambas'
@@ -66,7 +66,7 @@ const allServices = [
     name: 'Mão - Esmaltação Tradicional',
     description: 'Cuidado clássico das mãos, deixando suas unhas impecáveis com a esmaltação perfeita.',
     duration: '40 min',
-    price: '29,98',
+    price: '34,99',
     popular: true,
     image: Mao,
     unidade: 'Ambas'
@@ -76,7 +76,7 @@ const allServices = [
     name: 'Pé - Esmaltação em Gel',
     description: 'Unhas dos pés perfeitas por semanas, com brilho intenso e secagem imediata. Ideal para viagens.',
     duration: '60 min',
-    price: '59,98',
+    price: '79,99',
     popular: false,
     image: PeMaoGel,
     unidade: 'Ambas'
@@ -86,17 +86,17 @@ const allServices = [
     name: 'Mão - Esmaltação em Gel',
     description: 'A durabilidade e o brilho do esmalte em gel para unhas das mãos impecáveis por mais tempo.',
     duration: '60 min',
-    price: '59,98',
+    price: '79,99',
     popular: true,
     image: MaoGel,
     unidade: 'Ambas'
   },
   {
     category: 'Mãos e Pés',
-    name: 'SPA dos Pés',
-    description: 'Um ritual de relaxamento e cuidado profundo para renovar e hidratar seus pés. Tratamento de rachaduras',
+    name: 'SPA dos Pés + Pedicure',
+    description: 'Um ritual de relaxamento e cuidado profundo para renovar e hidratar seus pés. Tratamento de rachadura',
     duration: '1h 30 min',
-    price: '79,90',
+    price: '129,99',
     popular: false,
     image: SPA,
     unidade: 'Ambas'
@@ -106,7 +106,7 @@ const allServices = [
     name: 'Tratamento de Unha',
     description: 'Tratamento de unhas contaminadas, com fungos ou micoses, promovendo a saúde e a recuperação das unhas.',
     duration: '60 min | sessão',
-    price: '49,90 | sessão',
+    price: '49,99 | sessão',
     popular: false,
     image: Tratamento,
     unidade: 'Ambas'
@@ -116,7 +116,7 @@ const allServices = [
     name: 'Tratamento de Olho de Peixe',
     description: 'Tratamento especializado para remoção de calos e pele ressecada nos pés. Utilizando técnicas de cauterização com jato de plasma.',
     duration: '30 min | sessão',
-    price: '59,90 | sessão',
+    price: '59,99 | sessão',
     popular: false,
     image: Tratamento,
     unidade: 'Ambas'
@@ -126,7 +126,7 @@ const allServices = [
     name: 'Cuticulagem',
     description: 'Serviço de remoção e hidratação precisa das cutículas para um acabamento limpo e profissional. Esmaltacao opcional com base.',
     duration: '30 min',
-    price: '24,98',
+    price: '24,99',
     popular: false,
     image: Cuticulagem,
     unidade: 'Ambas'
@@ -136,7 +136,7 @@ const allServices = [
     name: 'Banho de Gel',
     description: 'Camada protetora de gel que aumenta a resistência da unha natural, evitando quebras.',
     duration: '60 min',
-    price: '59,90',
+    price: '79,99',
     popular: false,
     image: PeMao,
     unidade: 'Ambas'
@@ -156,7 +156,7 @@ const allServices = [
     name: 'Restauração de Unha',
     description: 'Recuperação de unhas danificadas com técnicas de reconstrução. Ideal para quando quebra ou lasca alguma unha específica.',
     duration: '20 min',
-    price: '9,90 por unha',
+    price: '14,99 por unha',
     popular: false,
     image: Restauracao,
     unidade: 'Ambas'
@@ -186,7 +186,7 @@ const allServices = [
     name: 'Buço (cera)',
     description: 'Remoção de pelos da região do buço com cera de alta qualidade.',
     duration: '20 min',
-    price: '14,99',
+    price: '19,99',
     popular: false,
     image: Cera,
     unidade: 'Miguel Badra'
@@ -206,7 +206,7 @@ const allServices = [
     name: 'Queixo (cera)',
     description: 'Remoção de pelos da região do queixo com cera de alta qualidade.',
     duration: '20 min',
-    price: '14,99',
+    price: '19,99',
     popular: false,
     image: Cera,
     unidade: 'Miguel Badra'
@@ -216,7 +216,7 @@ const allServices = [
     name: 'Axila (cera)',
     description: 'Depilação corporal com cera de alta qualidade para uma pele lisa e macia.',
     duration: '20 min',
-    price: '19,98',
+    price: '19,99',
     popular: true,
     image: Cera,
     unidade: 'Miguel Badra'
@@ -226,7 +226,7 @@ const allServices = [
     name: 'Linha da Barriga (cera)',
     description: 'Depilação corporal com cera de alta qualidade para uma pele lisa e macia.',
     duration: '20 min',
-    price: '19,98',
+    price: '19,99',
     popular: false,
     image: Cera,
     unidade: 'Miguel Badra'
@@ -246,7 +246,7 @@ const allServices = [
     name: 'Glúteo (cera)',
     description: 'Depilação corporal com cera de alta qualidade para uma pele lisa e macia.',
     duration: '40 min',
-    price: '39,99',
+    price: '49,99',
     popular: false,
     image: Cera,
     unidade: 'Miguel Badra'
@@ -256,7 +256,7 @@ const allServices = [
     name: 'Virilha Completa + Perianal (cera)',
     description: 'Depilação corporal com cera de alta qualidade para uma pele lisa e macia.',
     duration: '1 hora',
-    price: '59,99',
+    price: '79,99',
     popular: true,
     image: Cera,
     unidade: 'Miguel Badra'
@@ -276,7 +276,7 @@ const allServices = [
     name: 'Perna Completa (cera)',
     description: 'Depilação corporal com cera de alta qualidade para uma pele lisa e macia.',
     duration: '40 min',
-    price: '59,99',
+    price: '69,99',
     popular: false,
     image: Cera,
     unidade: 'Miguel Badra'
@@ -296,7 +296,7 @@ const allServices = [
     name: 'Reflexologia Podal',
     description: 'Técnica de massagem que estimula pontos reflexos nos pés, promovendo relaxamento e bem-estar.',
     duration: '2 horas',
-    price: '79,90',
+    price: '99,90',
     popular: false,
     image: Cera,
     unidade: 'Ambas'

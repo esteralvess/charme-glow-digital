@@ -13,7 +13,7 @@ const Header = () => {
     { path: '/', label: 'Home' },
     { path: '/catalogo', label: 'Catálogo' },
     { path: '/avaliacoes', label: 'Avaliações' },
-    { path: '/inauguracao', label: 'Inauguração' },
+    // { path: '/empresas', label: 'Empresas' },
     { path: '/atendimento-express', label: 'Atendimento Express' },
     { path: '/contato', label: 'Contato' },
   ];

@@ -11,7 +11,7 @@ import Footer from "./components/layout/Footer";
 const Home = lazy(() => import("./pages/Home"));
 const Catalogo = lazy(() => import("./pages/Catalogo"));
 const Avaliacoes = lazy(() => import("./pages/Avaliacoes"));
-const Inauguracao = lazy(() => import("./pages/Inauguracao"));
+const Empresas = lazy(() => import("./pages/Empresas"));
 const Contato = lazy(() => import("./pages/Contato"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const AtendimentoExpress = lazy(() => import("./pages/AtendimentoExpress"));
@@ -38,7 +38,7 @@ const App = () => (
               <Route path="/" element={<Home />} />
               <Route path="/catalogo" element={<Catalogo />} />
               <Route path="/avaliacoes" element={<Avaliacoes />} />
-              <Route path="/inauguracao" element={<Inauguracao />} />
+              {/* <Route path="/empresas" element={<Empresas />} /> */}
               <Route path="/contato" element={<Contato />} />
               <Route path="/atendimento-express" element={<AtendimentoExpress />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
